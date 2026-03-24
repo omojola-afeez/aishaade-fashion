@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "Bj0Pnm2y71fvBoT7m1sNW"
+uri = "file://aishaade-fashion-code.tar.gz"
+type = "unspecified"
+title = "AishaADe Fashion — Source Code"
