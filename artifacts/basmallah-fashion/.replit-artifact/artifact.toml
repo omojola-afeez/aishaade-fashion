@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Basmallah Fashion"
+version = "1.0.0"
+id = "artifacts/basmallah-fashion"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22442
+
+[services.development]
+run = "pnpm --filter @workspace/basmallah-fashion run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/basmallah-fashion", "run", "build" ]
+publicDir = "artifacts/basmallah-fashion/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22442"
+BASE_PATH = "/"
