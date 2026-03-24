@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ShoppingBag } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { AishaAdeLogo } from "@/components/AishaAdeLogo";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,18 +35,8 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-secondary-foreground group-hover:scale-105 transition-transform duration-300">
-              <ShoppingBag className="w-5 h-5" />
-            </div>
-            <div>
-              <span className={cn("font-serif text-xl font-bold block tracking-wide transition-colors", isScrolled ? "text-primary" : "text-white")}>
-                Basmallah
-              </span>
-              <span className={cn("text-[10px] uppercase tracking-widest transition-colors", isScrolled ? "text-muted-foreground" : "text-white/60")}>
-                Fashion
-              </span>
-            </div>
+          <Link href="/">
+            <AishaAdeLogo size={40} variant="full" light={!isScrolled} />
           </Link>
 
           <nav className="hidden md:flex items-center gap-1">

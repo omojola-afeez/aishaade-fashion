@@ -2,11 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   LogOut, Plus, Edit2, Trash2, AlertTriangle, Package, Tag, BarChart3,
-  Upload, X, ChevronDown, Save, Eye, EyeOff, ShoppingBag
+  Upload, X, Save, Eye, EyeOff
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth, getAdminHeaders } from "@/hooks/use-admin";
 import { formatCurrency } from "@/lib/utils";
+import { AishaAdeLogo } from "@/components/AishaAdeLogo";
 
 const BASE = "/api";
 
@@ -167,11 +168,11 @@ export default function Admin() {
           className="relative bg-white rounded-3xl p-8 w-full max-w-md shadow-2xl"
         >
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <ShoppingBag className="w-8 h-8 text-secondary" />
+            <div className="flex justify-center mb-2">
+              <AishaAdeLogo size={56} variant="mark" />
             </div>
             <h1 className="font-serif text-2xl font-bold text-foreground">Admin Portal</h1>
-            <p className="text-muted-foreground text-sm mt-1">Basmallah Fashion Management</p>
+            <p className="text-muted-foreground text-sm mt-1">AishaADe Fashion Management</p>
           </div>
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="relative">
@@ -214,8 +215,7 @@ export default function Admin() {
       <header className="bg-primary shadow-lg sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <ShoppingBag className="w-6 h-6 text-secondary" />
-            <span className="font-serif text-xl font-bold text-white">Basmallah Admin</span>
+            <AishaAdeLogo size={36} variant="full" light={true} />
           </div>
           <div className="flex items-center gap-2">
             {alerts.length > 0 && (
