@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { useGetProduct } from "@workspace/api-client-react";
 import { formatCurrency } from "@/lib/utils";
 
-const WHATSAPP_NUMBER = "2348012345678";
+const WHATSAPP_NUMBER = "2347062921566";
 
 export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();

@@ -50,11 +50,15 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-primary-foreground/70">
                 <MapPin className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                <span>Ilorin, Kwara State, Nigeria</span>
+                <span>20 Akinyemi Street, Ayegbami, Giwa Junction, Iju Ishaga, Lagos</span>
+              </li>
+              <li className="flex items-start gap-3 text-primary-foreground/70">
+                <MapPin className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
+                <span>Shop 2, Adjacent Alhikmah University, Mandate, Ilorin</span>
               </li>
               <li className="flex items-center gap-3 text-primary-foreground/70">
                 <Phone className="w-5 h-5 text-secondary shrink-0" />
-                <span>+234 801 234 5678</span>
+                <a href="https://wa.me/2347062921566" className="hover:text-secondary transition-colors">+234 706 292 1566</a>
               </li>
             </ul>
           </div>
