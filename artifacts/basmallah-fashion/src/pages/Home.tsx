@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Star, ShoppingBag, Users, CheckCircle } from "lucide-react";
+import { ArrowRight, Star, ShoppingBag, Users, CheckCircle, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -12,26 +12,26 @@ export default function Home() {
   const { data: products, isLoading: isLoadingProducts } = useListProducts();
   const { data: categories } = useListCategories();
 
-  const featuredProducts = products?.filter(p => p.isFeatured).slice(0, 4) || products?.slice(0, 4) || [];
+  const featuredFashion = products?.filter(p => p.isFeatured).slice(0, 4) || products?.slice(0, 4) || [];
+
   const stats = [
     { label: "Premium Items", value: products?.length || 150, icon: ShoppingBag },
-    { label: "Happy Customers", value: "2,500+", icon: Users },
-    { label: "Categories", value: categories?.length || 8, icon: CheckCircle },
+    { label: "Happy Customers", value: "250+", icon: Users },
+    { label: "Categories", value: categories?.length || 13, icon: CheckCircle },
     { label: "Average Rating", value: "4.9/5", icon: Star },
   ];
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      
+
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-          {/* Background Image & Overlay */}
           <div className="absolute inset-0 z-0">
-            <img 
-              src={getAssetPath('images/hero-bg.png')} 
-              alt="Regal Islamic Pattern" 
+            <img
+              src={getAssetPath('images/hero-bg.png')}
+              alt="Regal Pattern"
               className="w-full h-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-primary/90 mix-blend-multiply" />
@@ -46,23 +46,23 @@ export default function Home() {
               className="max-w-3xl mx-auto"
             >
               <span className="inline-block py-1 px-3 rounded-full bg-secondary/20 text-secondary border border-secondary/30 text-sm font-semibold tracking-widest uppercase mb-6 shadow-lg shadow-secondary/10">
-                The Royal Collection
+                Fashion & Gadgets
               </span>
               <h1 className="font-serif text-5xl md:text-7xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
-                Elegance in Every <span className="text-secondary italic">Thread</span>
+                Style Meets <span className="text-secondary italic">Technology</span>
               </h1>
               <p className="text-lg md:text-xl text-primary-foreground/90 mb-10 leading-relaxed">
-                Discover our curated collection of premium Abayas, Jalabias, and traditional wear for the modern family. Crafted with precision, worn with pride.
+                Discover premium Islamic & African fashion — Abayas, Kaftans, Jalabias — and the latest gadgets, all in one place. For the whole family.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/catalog">
+                <Link href="/catalog?section=fashion">
                   <Button size="lg" className="w-full sm:w-auto bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold rounded-full px-8 py-6 text-lg shadow-xl shadow-secondary/20 transition-all hover:-translate-y-1">
-                    Shop Collection
+                    Shop Fashion
                   </Button>
                 </Link>
-                <Link href="/catalog?category=Men">
+                <Link href="/catalog?section=gadgets">
                   <Button size="lg" variant="outline" className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg backdrop-blur-sm transition-all hover:-translate-y-1">
-                    Men's Jalabia
+                    Shop Gadgets
                   </Button>
                 </Link>
               </div>
@@ -70,14 +70,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Stats Section */}
+        {/* Stats */}
         <section className="py-12 bg-background border-b border-border/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x-0 md:divide-x divide-border/50">
               {stats.map((stat, i) => {
                 const Icon = stat.icon;
                 return (
-                  <motion.div 
+                  <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -97,22 +97,23 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Category Showcase */}
+        {/* Fashion Section */}
         <section className="py-24 bg-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="font-serif text-4xl font-bold text-foreground mb-4">Shop by Category</h2>
+              <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Fashion</span>
+              <h2 className="font-serif text-4xl font-bold text-foreground mb-4">Shop Clothing</h2>
               <div className="w-24 h-1 bg-secondary mx-auto rounded-full" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { title: "Men's Collection", image: getAssetPath('images/category-men.png'), link: "/catalog?category=Men" },
-                { title: "Women's Collection", image: getAssetPath('images/category-women.png'), link: "/catalog?category=Women" },
-                { title: "Kids' Collection", image: getAssetPath('images/category-kids.png'), link: "/catalog?category=Kids" }
+                { title: "Women's Collection", image: getAssetPath('images/category-women.png'), link: "/catalog?category=women" },
+                { title: "Men's Collection", image: getAssetPath('images/category-men.png'), link: "/catalog?category=men" },
+                { title: "Kids' Collection", image: getAssetPath('images/category-kids.png'), link: "/catalog?category=kids" },
               ].map((cat, i) => (
                 <Link key={i} href={cat.link}>
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
@@ -131,11 +132,62 @@ export default function Home() {
                 </Link>
               ))}
             </div>
+
+            <div className="mt-10 text-center">
+              <Link href="/catalog?section=fashion">
+                <Button variant="outline" className="rounded-full border-primary text-primary px-8">
+                  View All Fashion <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </section>
 
-        {/* Featured Products */}
+        {/* Gadgets Section */}
         <section className="py-24 bg-background">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <span className="inline-block py-1 px-3 rounded-full bg-secondary/15 text-secondary text-xs font-bold tracking-widest uppercase mb-3">Gadgets</span>
+              <h2 className="font-serif text-4xl font-bold text-foreground mb-4">Shop Electronics</h2>
+              <div className="w-24 h-1 bg-secondary mx-auto rounded-full" />
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {[
+                { title: "Phones & Accessories", icon: "📱", link: "/catalog?category=phones" },
+                { title: "Laptops & Computers", icon: "💻", link: "/catalog?category=laptops" },
+                { title: "Smart Watches", icon: "⌚", link: "/catalog?category=smart-watches" },
+                { title: "Audio & Earphones", icon: "🎧", link: "/catalog?category=audio" },
+                { title: "Power Banks", icon: "🔋", link: "/catalog?category=power-banks" },
+                { title: "Accessories", icon: "🔌", link: "/catalog?category=gadget-accessories" },
+              ].map((cat, i) => (
+                <Link key={i} href={cat.link}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 }}
+                    className="group flex flex-col items-center justify-center p-6 rounded-2xl bg-muted/50 hover:bg-primary hover:text-white cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg text-center border border-border/30"
+                  >
+                    <span className="text-4xl mb-3">{cat.icon}</span>
+                    <span className="text-sm font-semibold leading-snug group-hover:text-white text-foreground">{cat.title}</span>
+                  </motion.div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="mt-10 text-center">
+              <Link href="/catalog?section=gadgets">
+                <Button className="rounded-full bg-primary text-white px-8">
+                  Browse All Gadgets <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Fashion Products */}
+        <section className="py-24 bg-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-end mb-12">
               <div>
@@ -149,14 +201,14 @@ export default function Home() {
 
             {isLoadingProducts ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {[1,2,3,4].map(i => (
+                {[1, 2, 3, 4].map(i => (
                   <div key={i} className="animate-pulse bg-muted rounded-2xl aspect-[3/4]" />
                 ))}
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {featuredProducts.map((product, i) => (
-                  <motion.div 
+                {featuredFashion.map((product, i) => (
+                  <motion.div
                     key={product.id}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -168,7 +220,7 @@ export default function Home() {
                 ))}
               </div>
             )}
-            
+
             <div className="mt-12 text-center sm:hidden">
               <Link href="/catalog">
                 <Button variant="outline" className="w-full rounded-full border-primary text-primary">
@@ -179,7 +231,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   );

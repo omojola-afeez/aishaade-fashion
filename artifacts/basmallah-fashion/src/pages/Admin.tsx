@@ -19,7 +19,7 @@ type Product = {
   isFeatured: boolean; badge?: string; createdAt?: string;
 };
 
-type Category = { id: number; name: string; slug: string; gender: string };
+type Category = { id: number; name: string; slug: string; gender: string; section: string };
 
 const EMPTY_FORM = {
   name: "", description: "", price: 0, categoryId: 0, gender: "unisex", ageGroup: "all",
@@ -172,7 +172,7 @@ export default function Admin() {
               <AishaAdeLogo size={56} variant="mark" />
             </div>
             <h1 className="font-serif text-2xl font-bold text-foreground">Admin Portal</h1>
-            <p className="text-muted-foreground text-sm mt-1">AishaADe Fashion Management</p>
+            <p className="text-muted-foreground text-sm mt-1">AishaADe Fashion & Gadgets Hub — Admin</p>
           </div>
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="relative">
@@ -387,7 +387,12 @@ export default function Admin() {
                   <label className="text-sm font-bold text-foreground block mb-2">Category *</label>
                   <select required value={form.categoryId || ""} onChange={e => setForm(f => ({ ...f, categoryId: parseInt(e.target.value) }))} className="input-field">
                     <option value="">Select category...</option>
-                    {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                    <optgroup label="👗 Fashion">
+                      {categories.filter(c => c.section === "fashion").map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                    </optgroup>
+                    <optgroup label="📱 Gadgets">
+                      {categories.filter(c => c.section === "gadgets").map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                    </optgroup>
                   </select>
                 </div>
                 <div>

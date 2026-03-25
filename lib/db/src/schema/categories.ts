@@ -8,6 +8,7 @@ export const categoriesTable = pgTable("categories", {
   slug: varchar("slug", { length: 100 }).notNull().unique(),
   description: text("description"),
   gender: varchar("gender", { length: 20 }).notNull().default("unisex"),
+  section: varchar("section", { length: 20 }).notNull().default("fashion"),
 });
 
 export const insertCategorySchema = createInsertSchema(categoriesTable).omit({ id: true });

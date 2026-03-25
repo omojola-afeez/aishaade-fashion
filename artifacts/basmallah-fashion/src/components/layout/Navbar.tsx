@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown, Shirt, Smartphone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { AishaAdeLogo } from "@/components/AishaAdeLogo";
@@ -8,6 +8,8 @@ import { AishaAdeLogo } from "@/components/AishaAdeLogo";
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [fashionOpen, setFashionOpen] = useState(false);
+  const [gadgetsOpen, setGadgetsOpen] = useState(false);
   const [location] = useLocation();
 
   useEffect(() => {
@@ -16,21 +18,39 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Catalog", href: "/catalog" },
-    { name: "Men", href: "/catalog?category=men" },
-    { name: "Women", href: "/catalog?category=women" },
-    { name: "Kids", href: "/catalog?category=kids" },
+  const fashionLinks = [
+    { name: "All Fashion", href: "/catalog?section=fashion" },
+    { name: "Women's Collection", href: "/catalog?category=women" },
+    { name: "Men's Collection", href: "/catalog?category=men" },
+    { name: "Kids' Wear", href: "/catalog?category=kids" },
+    { name: "Abayas", href: "/catalog?category=abaya" },
+    { name: "Jalabias", href: "/catalog?category=jalabia" },
+    { name: "Kaftans", href: "/catalog?category=kaftan" },
+    { name: "Hijab & Accessories", href: "/catalog?category=hijab" },
   ];
+
+  const gadgetLinks = [
+    { name: "All Gadgets", href: "/catalog?section=gadgets" },
+    { name: "Phones & Accessories", href: "/catalog?category=phones" },
+    { name: "Laptops & Computers", href: "/catalog?category=laptops" },
+    { name: "Smart Watches", href: "/catalog?category=smart-watches" },
+    { name: "Audio & Earphones", href: "/catalog?category=audio" },
+    { name: "Power Banks", href: "/catalog?category=power-banks" },
+  ];
+
+  const linkClass = (scrolled: boolean) =>
+    cn(
+      "flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all",
+      scrolled
+        ? "hover:bg-muted text-foreground/80 hover:text-foreground"
+        : "hover:bg-white/10 text-white/80 hover:text-white"
+    );
 
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-md py-3"
-          : "bg-primary py-4"
+        isScrolled ? "bg-background/95 backdrop-blur-md shadow-md py-3" : "bg-primary py-4"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,22 +59,56 @@ export function Navbar() {
             <AishaAdeLogo size={40} variant="full" light={!isScrolled} />
           </Link>
 
+          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={cn(
-                  "px-4 py-2 rounded-lg text-sm font-medium transition-all",
-                  isScrolled
-                    ? "hover:bg-muted text-foreground/80 hover:text-foreground"
-                    : "hover:bg-white/10 text-white/80 hover:text-white",
-                  location === link.href && (isScrolled ? "text-primary font-bold" : "text-white font-bold bg-white/10")
+            <Link href="/" className={linkClass(isScrolled)}>Home</Link>
+
+            {/* Fashion Dropdown */}
+            <div className="relative" onMouseEnter={() => setFashionOpen(true)} onMouseLeave={() => setFashionOpen(false)}>
+              <button className={cn(linkClass(isScrolled), "flex items-center gap-1")}>
+                <Shirt className="w-4 h-4" /> Fashion <ChevronDown className={cn("w-3.5 h-3.5 transition-transform", fashionOpen && "rotate-180")} />
+              </button>
+              <AnimatePresence>
+                {fashionOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    className="absolute top-full left-0 mt-1 w-52 bg-white rounded-2xl shadow-xl border border-border/20 py-2 z-50"
+                  >
+                    {fashionLinks.map(l => (
+                      <Link key={l.name} href={l.href} className="block px-4 py-2.5 text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-colors">
+                        {l.name}
+                      </Link>
+                    ))}
+                  </motion.div>
                 )}
-              >
-                {link.name}
-              </Link>
-            ))}
+              </AnimatePresence>
+            </div>
+
+            {/* Gadgets Dropdown */}
+            <div className="relative" onMouseEnter={() => setGadgetsOpen(true)} onMouseLeave={() => setGadgetsOpen(false)}>
+              <button className={cn(linkClass(isScrolled), "flex items-center gap-1")}>
+                <Smartphone className="w-4 h-4" /> Gadgets <ChevronDown className={cn("w-3.5 h-3.5 transition-transform", gadgetsOpen && "rotate-180")} />
+              </button>
+              <AnimatePresence>
+                {gadgetsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    className="absolute top-full left-0 mt-1 w-52 bg-white rounded-2xl shadow-xl border border-border/20 py-2 z-50"
+                  >
+                    {gadgetLinks.map(l => (
+                      <Link key={l.name} href={l.href} className="block px-4 py-2.5 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors">
+                        {l.name}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             <a
               href="https://wa.me/2347062921566"
               target="_blank"
@@ -74,6 +128,7 @@ export function Navbar() {
         </div>
       </div>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -82,25 +137,28 @@ export function Navbar() {
             exit={{ height: 0, opacity: 0 }}
             className="md:hidden bg-primary border-t border-white/10 overflow-hidden"
           >
-            <div className="px-4 py-6 flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={cn(
-                    "text-base font-medium py-3 px-4 rounded-lg",
-                    location === link.href ? "bg-white/15 text-white font-bold" : "text-white/80"
-                  )}
-                >
-                  {link.name}
+            <div className="px-4 py-6 flex flex-col gap-1">
+              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-white/80 py-2.5 px-4 font-medium">Home</Link>
+
+              <div className="py-1 px-4 text-xs font-bold text-secondary/70 uppercase tracking-widest mt-2">Fashion</div>
+              {fashionLinks.map(l => (
+                <Link key={l.name} href={l.href} onClick={() => setMobileMenuOpen(false)} className="text-white/80 py-2.5 px-6 text-sm hover:text-white">
+                  {l.name}
                 </Link>
               ))}
+
+              <div className="py-1 px-4 text-xs font-bold text-secondary/70 uppercase tracking-widest mt-2">Gadgets</div>
+              {gadgetLinks.map(l => (
+                <Link key={l.name} href={l.href} onClick={() => setMobileMenuOpen(false)} className="text-white/80 py-2.5 px-6 text-sm hover:text-white">
+                  {l.name}
+                </Link>
+              ))}
+
               <a
                 href="https://wa.me/2347062921566"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 bg-secondary text-secondary-foreground font-bold rounded-full px-5 py-3 text-center shadow-lg"
+                className="mt-4 bg-secondary text-secondary-foreground font-bold rounded-full px-5 py-3 text-center shadow-lg"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Order on WhatsApp

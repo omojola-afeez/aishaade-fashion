@@ -89,15 +89,15 @@ export function AishaAdeLogo({ size = 42, variant = "full", light = false }: Log
           <div
             style={{
               fontFamily: "'Inter', sans-serif",
-              fontSize: size * 0.22,
+              fontSize: size * 0.18,
               fontWeight: 500,
               color: subTextColor,
-              letterSpacing: "0.18em",
+              letterSpacing: "0.12em",
               textTransform: "uppercase",
               marginTop: 2,
             }}
           >
-            Fashion
+            Fashion & Gadgets Hub
           </div>
         </div>
       )}
