@@ -50,15 +50,25 @@ export default function Admin() {
 
   const fetchData = async () => {
     const headers = getAdminHeaders() as HeadersInit;
+    const safeJson = (p: Promise<Response>) =>
+      p.then(r => r.json()).catch(() => null);
+
     const [prods, cats, alts] = await Promise.all([
-      fetch(`${BASE}/admin/products`, { headers }).then(r => r.json()),
-      fetch(`${BASE}/categories`).then(r => r.json()),
-      fetch(`${BASE}/admin/inventory/alerts`, { headers }).then(r => r.json()),
+      safeJson(fetch(`${BASE}/admin/products`, { headers })),
+      safeJson(fetch(`${BASE}/categories`)),
+      safeJson(fetch(`${BASE}/admin/inventory/alerts`, { headers })),
     ]);
-    setProducts(Array.isArray(prods) ? prods : []);
-    setCategories(Array.isArray(cats) ? cats : []);
-    setAlerts(Array.isArray(alts) ? alts : []);
+    if (Array.isArray(prods)) setProducts(prods);
+    if (Array.isArray(cats)) setCategories(cats);
+    if (Array.isArray(alts)) setAlerts(alts);
   };
+
+  useEffect(() => {
+    fetch(`${BASE}/categories`)
+      .then(r => r.json())
+      .then(cats => { if (Array.isArray(cats)) setCategories(cats); })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => { if (isAuthenticated) fetchData(); }, [isAuthenticated]);
 
@@ -127,7 +137,8 @@ export default function Admin() {
     e.preventDefault();
     setSaving(true);
     try {
-      const body = { ...form, badge: form.badge || null };
+      const resolvedCategoryId = form.categoryId || (categories[0]?.id ?? 1);
+      const body = { ...form, categoryId: resolvedCategoryId, badge: form.badge || null };
       const url = editProduct ? `${BASE}/admin/products/${editProduct.id}` : `${BASE}/admin/products`;
       const method = editProduct ? "PUT" : "POST";
       const r = await fetch(url, {
@@ -384,16 +395,33 @@ export default function Admin() {
                     placeholder="0.00" className="input-field" />
                 </div>
                 <div>
-                  <label className="text-sm font-bold text-foreground block mb-2">Category *</label>
-                  <select required value={form.categoryId || ""} onChange={e => setForm(f => ({ ...f, categoryId: parseInt(e.target.value) }))} className="input-field">
-                    <option value="">Select category...</option>
-                    <optgroup label="👗 Fashion">
-                      {categories.filter(c => c.section === "fashion").map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
-                    </optgroup>
-                    <optgroup label="📱 Gadgets">
-                      {categories.filter(c => c.section === "gadgets").map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
-                    </optgroup>
-                  </select>
+                  <label className="text-sm font-bold text-foreground block mb-2">Category</label>
+                  {(() => {
+                    const gadgetCats = categories.filter(c => c.section === "gadgets");
+                    const fashionCats = categories.filter(c => c.section !== "gadgets");
+                    const hasGroups = gadgetCats.length > 0 || fashionCats.length > 0;
+                    return (
+                      <select value={form.categoryId || ""} onChange={e => setForm(f => ({ ...f, categoryId: parseInt(e.target.value) || 0 }))} className="input-field">
+                        <option value="">— Select category (optional) —</option>
+                        {hasGroups ? (
+                          <>
+                            {fashionCats.length > 0 && (
+                              <optgroup label="👗 Fashion">
+                                {fashionCats.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                              </optgroup>
+                            )}
+                            {gadgetCats.length > 0 && (
+                              <optgroup label="📱 Gadgets">
+                                {gadgetCats.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                              </optgroup>
+                            )}
+                          </>
+                        ) : (
+                          categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)
+                        )}
+                      </select>
+                    );
+                  })()}
                 </div>
                 <div>
                   <label className="text-sm font-bold text-foreground block mb-2">Gender</label>
