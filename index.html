@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AishaAde – Islamic Wears & Home Gadgets</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --cream:#f7f2ea;
+  --sand:#ede3d0;
+  --olive:#5c6e3a;
+  --olive-dark:#3d4a26;
+  --olive-mid:#7a8f52;
+  --brown:#6b3a1f;
+  --brown-light:#9c6240;
+  --gold:#c9a84c;
+  --gold-light:#e8c96a;
+  --charcoal:#1e1e1e;
+  --white:#ffffff;
+  --muted:#8a7e6e;
+  --border:#ddd3bb;
+  --card:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal);font-size:15px;line-height:1.65;overflow-x:hidden}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--olive-dark);color:rgba(237,227,208,.9);text-align:center;font-size:12px;letter-spacing:.09em;padding:8px 20px}
+.topbar a{color:var(--gold-light);text-decoration:none}
+
+/* ── NAV ── */
+nav{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-inner{max-width:1300px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:72px}
+
+/* LOGO SVG */
+.logo-wrap{display:flex;align-items:center;gap:11px;text-decoration:none}
+.logo-svg{width:46px;height:46px;flex-shrink:0}
+.logo-text{display:flex;flex-direction:column;line-height:1}
+.logo-text strong{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--olive-dark);letter-spacing:.02em}
+.logo-text span{font-size:10px;font-weight:400;color:var(--muted);letter-spacing:.18em;text-transform:uppercase;margin-top:1px}
+
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--charcoal);font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--olive);transition:width .25s}
+.nav-links a:hover{color:var(--olive)}
+.nav-links a:hover::after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:16px}
+.nav-btn{background:none;border:none;cursor:pointer;color:var(--charcoal);font-size:19px;line-height:1;transition:color .2s;display:flex;align-items:center}
+.nav-btn:hover{color:var(--olive)}
+.cart-wrap{position:relative}
+.cart-badge{position:absolute;top:-6px;right:-8px;background:var(--olive);color:#fff;font-size:9px;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:600}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#ede3d0 0%,#e4d8c0 60%,#d8ccb0 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%235c6e3a' fill-opacity='0.045'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;pointer-events:none}
+.hero-grid{max-width:1300px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1fr 1fr;min-height:500px}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:70px 60px 70px 0;border-right:1px solid rgba(180,160,120,.3)}
+.hero-right{display:flex;flex-direction:column;justify-content:center;padding:70px 0 70px 60px}
+.hero-eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--olive);font-weight:600;margin-bottom:14px}
+.hero-left h1{font-family:'Playfair Display',serif;font-size:58px;line-height:1.02;color:var(--brown);margin-bottom:16px;font-weight:700}
+.hero-left h1 em{font-style:italic;color:var(--olive-dark)}
+.hero-left p{font-size:14.5px;color:var(--muted);margin-bottom:30px;max-width:340px;line-height:1.75}
+
+.hero-right h2{font-family:'Playfair Display',serif;font-size:42px;line-height:1.1;color:var(--charcoal);margin-bottom:12px;font-weight:500}
+.hero-right h2 em{color:var(--olive-dark);font-style:italic}
+.hero-right p{font-size:14px;color:var(--muted);margin-bottom:24px;max-width:320px}
+
+/* Product preview strip in hero */
+.hero-products{display:flex;gap:12px;margin-top:20px}
+.hero-prod-thumb{background:var(--white);border-radius:8px;overflow:hidden;width:90px;height:90px;border:1px solid var(--border);flex-shrink:0;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.hero-prod-thumb:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.hero-prod-thumb img{width:100%;height:100%;object-fit:cover}
+
+/* Buttons */
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--olive-dark);color:#fff;padding:13px 32px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;font-family:'DM Sans',sans-serif;font-weight:600;border:2px solid var(--olive-dark);transition:all .25s;cursor:pointer}
+.btn-primary:hover{background:transparent;color:var(--olive-dark)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--brown);padding:13px 32px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;font-family:'DM Sans',sans-serif;font-weight:600;border:2px solid var(--brown);transition:all .25s;cursor:pointer}
+.btn-outline:hover{background:var(--brown);color:#fff}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--charcoal);padding:13px 32px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;font-family:'DM Sans',sans-serif;font-weight:600;border:2px solid var(--gold);transition:all .25s;cursor:pointer}
+.btn-gold:hover{background:transparent;color:var(--gold)}
+
+/* ── MARQUEE ── */
+.marquee-wrap{background:var(--olive-dark);padding:12px 0;overflow:hidden}
+.marquee-track{display:flex;gap:0;animation:marquee 28s linear infinite;width:max-content}
+.marquee-item{white-space:nowrap;color:var(--sand);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:0 40px;border-right:1px solid rgba(255,255,255,.15)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── COLLECTION BANNERS ── */
+.banners{max-width:1300px;margin:36px auto 0;padding:0 28px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.banner{border-radius:3px;padding:44px 40px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;min-height:210px}
+.banner-f{background:linear-gradient(120deg,#ddd0b8 0%,#c8b898 100%)}
+.banner-m{background:linear-gradient(120deg,#6b8048 0%,#3d4a26 100%)}
+.banner h2{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;margin-bottom:6px}
+.banner p{font-size:13px;margin-bottom:22px;opacity:.85}
+.banner-f h2,.banner-f p{color:var(--brown)}
+.banner-m h2,.banner-m p{color:#fff}
+.banner-m .btn-gold{}
+.banner::after{content:'';position:absolute;right:-50px;top:50%;transform:translateY(-50%);width:200px;height:200px;border-radius:50%;border:50px solid rgba(255,255,255,.08);pointer-events:none}
+
+/* ── TRUST ── */
+.trust{max-width:1300px;margin:32px auto 0;padding:0 28px}
+.trust-inner{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);background:var(--border);gap:1px;border-radius:4px;overflow:hidden}
+.trust-cell{background:var(--white);padding:22px 20px;display:flex;align-items:center;gap:14px}
+.trust-icon{font-size:26px;flex-shrink:0}
+.trust-cell strong{display:block;font-size:13px;font-weight:600}
+.trust-cell span{font-size:11.5px;color:var(--muted)}
+
+/* ── SECTIONS ── */
+.section{max-width:1300px;margin:0 auto;padding:60px 28px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:30px;border-bottom:1px solid var(--border);padding-bottom:16px}
+.sec-head h2{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--charcoal)}
+.sec-head a{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);text-decoration:none;font-weight:500}
+.sec-head a:hover{text-decoration:underline}
+
+/* ── CATEGORIES ── */
+.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.cat-item{text-align:center;cursor:pointer}
+.cat-circle{width:100%;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;border:2px solid transparent;transition:border-color .2s,transform .2s;margin:0 auto 12px}
+.cat-item:hover .cat-circle{border-color:var(--olive);transform:scale(1.05)}
+.c1{background:linear-gradient(135deg,#ede3d0,#d8ccb0)}
+.c2{background:linear-gradient(135deg,#8a9e60,#5c6e3a)}
+.c3{background:linear-gradient(135deg,#d4c0a8,#b8a088)}
+.c4{background:linear-gradient(135deg,#4a4a4a,#1e1e1e)}
+.c5{background:linear-gradient(135deg,#c9a84c,#9a7c30)}
+.c6{background:linear-gradient(135deg,#8c6240,#5c3a1e)}
+.cat-item h3{font-size:13px;font-weight:500;margin-bottom:2px}
+.cat-item span{font-size:11px;color:var(--muted)}
+
+/* ── PRODUCTS ── */
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.prod-card{background:var(--white);border:1px solid var(--border);border-radius:2px;overflow:hidden;cursor:pointer;transition:box-shadow .25s,transform .25s;position:relative}
+.prod-card:hover{box-shadow:0 10px 36px rgba(0,0,0,.11);transform:translateY(-4px)}
+.prod-img-wrap{width:100%;aspect-ratio:1;overflow:hidden;position:relative;background:#f0ebe2}
+.prod-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.prod-card:hover .prod-img-wrap img{transform:scale(1.06)}
+.prod-badge{position:absolute;top:12px;left:12px;background:var(--olive);color:#fff;font-size:10px;letter-spacing:.1em;padding:4px 10px;text-transform:uppercase;font-weight:600;z-index:2}
+.prod-badge.sale{background:var(--brown)}
+.prod-badge.new{background:var(--olive-mid)}
+.wishlist-btn{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.85);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;z-index:2;transition:background .2s}
+.wishlist-btn:hover{background:#fff}
+.prod-info{padding:16px 16px 20px}
+.prod-cat{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
+.prod-info h3{font-size:14px;font-weight:500;color:var(--charcoal);margin-bottom:8px;line-height:1.35}
+.prod-price{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.prod-price strong{font-size:16px;color:var(--brown);font-weight:700}
+.prod-price del{font-size:13px;color:var(--muted)}
+.add-btn{width:100%;background:var(--charcoal);color:#fff;border:none;padding:11px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;transition:background .2s}
+.add-btn:hover{background:var(--olive-dark)}
+.add-btn.added{background:var(--olive)!important}
+/* WhatsApp enquire button */
+.wa-btn{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;background:#25d366;color:#fff;border:none;padding:11px;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-family:'DM Sans',sans-serif;font-weight:700;cursor:pointer;transition:background .2s;text-decoration:none}
+.wa-btn:hover{background:#1da851}
+
+/* ── 5-COL for gadgets ── */
+.prod-grid-5{grid-template-columns:repeat(5,1fr)}
+
+/* ── PLACEHOLDER images for items without photos ── */
+.prod-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
+.prod-placeholder span:first-child{font-size:56px;opacity:.7}
+.prod-placeholder span:last-child{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+/* ── SPLIT PROMO ── */
+.promo-split{max-width:1300px;margin:60px auto 0;padding:0 28px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.promo-card{border-radius:3px;overflow:hidden;position:relative;min-height:280px;display:flex;align-items:flex-end}
+.promo-img{position:absolute;inset:0;background-size:cover;background-position:center}
+.promo-img::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,0) 60%)}
+.promo-body{position:relative;z-index:1;padding:28px 28px 32px;width:100%}
+.promo-body p{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:6px}
+.promo-body h3{font-family:'Playfair Display',serif;font-size:28px;color:#fff;margin-bottom:14px;font-weight:700}
+.promo-body a{font-size:12px;color:var(--gold-light);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;font-weight:600;border-bottom:1px solid var(--gold-light);padding-bottom:2px}
+
+/* ── BLOG ── */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.blog-card{border:1px solid var(--border);background:var(--white);cursor:pointer;transition:box-shadow .2s}
+.blog-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.09)}
+.blog-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;position:relative}
+.blog-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.blog-card:hover .blog-thumb img{transform:scale(1.05)}
+.blog-thumb-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px}
+.bt1{background:linear-gradient(135deg,#ddd0b8,#8a9e60)}
+.bt2{background:linear-gradient(135deg,#3a3a3a,#1e1e1e)}
+.bt3{background:linear-gradient(135deg,#c8b4a0,#6b3a1f)}
+.blog-body{padding:20px}
+.blog-cat{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--olive);font-weight:600;margin-bottom:8px}
+.blog-body h3{font-family:'Playfair Display',serif;font-size:19px;line-height:1.35;color:var(--charcoal);margin-bottom:8px;font-weight:500}
+.blog-body p{font-size:13px;color:var(--muted);margin-bottom:14px}
+.read-more{font-size:12px;color:var(--olive);text-decoration:none;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+
+/* ── NEWSLETTER ── */
+.newsletter{background:var(--olive-dark);margin-top:60px;padding:64px 28px;text-align:center;position:relative;overflow:hidden}
+.newsletter::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;border:80px solid rgba(255,255,255,.04);pointer-events:none}
+.newsletter h2{font-family:'Playfair Display',serif;font-size:40px;color:var(--sand);font-weight:700;margin-bottom:10px}
+.newsletter p{color:rgba(237,227,208,.65);font-size:14.5px;margin-bottom:30px}
+.nl-form{display:flex;max-width:480px;margin:0 auto}
+.nl-form input{flex:1;padding:15px 20px;border:none;font-family:'DM Sans',sans-serif;font-size:13px;background:#fff;color:var(--charcoal);outline:none}
+.nl-form button{background:var(--gold);color:var(--charcoal);border:none;padding:15px 28px;font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:background .2s;white-space:nowrap}
+.nl-form button:hover{background:var(--gold-light)}
+
+/* ── FOOTER ── */
+footer{background:var(--charcoal);color:rgba(237,227,208,.7);padding:60px 28px 28px}
+.footer-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 1.6fr;gap:44px;margin-bottom:44px}
+.footer-logo-wrap{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.footer-logo-wrap .logo-text strong{color:var(--sand)}
+.footer-logo-wrap .logo-text span{color:rgba(237,227,208,.4)}
+.footer-about{font-size:13px;line-height:1.75;color:rgba(237,227,208,.6);margin-bottom:20px}
+.social{display:flex;gap:10px}
+.social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:var(--sand);text-decoration:none;font-size:13px;font-weight:600;transition:border-color .2s,color .2s}
+.social a:hover{border-color:var(--gold);color:var(--gold)}
+.fc h4{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);font-weight:600;margin-bottom:16px}
+.fc ul{list-style:none}
+.fc li{margin-bottom:9px}
+.fc a{color:rgba(237,227,208,.55);text-decoration:none;font-size:13px;transition:color .2s}
+.fc a:hover{color:var(--sand)}
+.fc-contact li{display:flex;gap:10px;font-size:13px;color:rgba(237,227,208,.6);margin-bottom:10px;align-items:flex-start}
+.fc-contact li .ic{color:var(--gold);flex-shrink:0;margin-top:2px}
+.footer-bottom{max-width:1300px;margin:0 auto;border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;font-size:12px;color:rgba(237,227,208,.35)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-left{animation:fadeUp .7s ease both}
+.hero-right{animation:fadeUp .7s .15s ease both}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--olive-dark);color:#fff;padding:12px 24px;border-radius:2px;font-size:13px;font-weight:500;z-index:999;transition:transform .3s;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .prod-grid{grid-template-columns:repeat(3,1fr)}
+  .prod-grid-5{grid-template-columns:repeat(3,1fr)}
+  .cats{grid-template-columns:repeat(4,1fr)}
+  .footer-inner{grid-template-columns:1fr 1fr 1fr}
+  .footer-inner>div:first-child{grid-column:1/-1}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-left{border-right:none;border-bottom:1px solid rgba(180,160,120,.3);padding:50px 0}
+  .hero-left h1{font-size:42px}
+  .hero-right{padding:50px 0}
+  .banners,.promo-split{grid-template-columns:1fr}
+  .trust-inner{grid-template-columns:1fr 1fr}
+  .prod-grid,.prod-grid-5{grid-template-columns:repeat(2,1fr)}
+  .cats{grid-template-columns:repeat(3,1fr)}
+  .blog-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- Toast notification -->
+<div class="toast" id="toast">Added to cart ✓</div>
+
+<!-- Topbar -->
+<div class="topbar">🚚 Free delivery on orders above ₦40,000 &nbsp;·&nbsp; Lagos & Ogun State &nbsp;<a href="https://wa.me/2347062921566" target="_blank">💬 Order on WhatsApp</a></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <!-- Beautiful SVG Logo -->
+    <a href="#" class="logo-wrap">
+      <svg class="logo-svg" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer decorative ring -->
+        <circle cx="23" cy="23" r="21" stroke="#3d4a26" stroke-width="1.5" fill="none" opacity="0.4"/>
+        <!-- Inner circle fill -->
+        <circle cx="23" cy="23" r="18" fill="#3d4a26"/>
+        <!-- Islamic geometric star pattern -->
+        <g fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.9">
+          <polygon points="23,8 25.5,16.5 34,14 28,21 34,28 25.5,25.5 23,34 20.5,25.5 12,28 18,21 12,14 20.5,16.5" fill="none"/>
+        </g>
+        <!-- Inner 4-petal motif -->
+        <g fill="#c9a84c" opacity="0.85">
+          <ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(0 23 23)"/>
+          <ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(45 23 23)"/>
+          <ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(90 23 23)"/>
+          <ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(135 23 23)"/>
+        </g>
+        <!-- Centre dot -->
+        <circle cx="23" cy="23" r="2.8" fill="#fff"/>
+        <!-- Letters A A -->
+        <text x="23" y="27.5" text-anchor="middle" font-family="serif" font-size="6.5" font-weight="700" fill="#fff" letter-spacing="1">AA</text>
+        <!-- Corner leaf accents on outer ring -->
+        <circle cx="23" cy="2" r="1.2" fill="#c9a84c"/>
+        <circle cx="44" cy="23" r="1.2" fill="#c9a84c"/>
+        <circle cx="23" cy="44" r="1.2" fill="#c9a84c"/>
+        <circle cx="2" cy="23" r="1.2" fill="#c9a84c"/>
+      </svg>
+      <div class="logo-text">
+        <strong>AishaAde</strong>
+        <span>Islamic Wears & Home</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#wears">Wears</a></li>
+      <li><a href="#gadgets">Gadgets</a></li>
+      <li><a href="https://wa.me/2347062921566" target="_blank">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="nav-btn" title="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <a href="https://wa.me/2347062921566" target="_blank" class="nav-btn wa-nav-btn" title="Order on WhatsApp" style="text-decoration:none;background:#25d366;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;transition:background .2s">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">New Arrivals</span>
+    <span class="marquee-item">Free Delivery on Orders ₦40k+</span>
+    <span class="marquee-item">Islamic Wears · Home Gadgets</span>
+    <span class="marquee-item">Lagos & Ogun State Delivery</span>
+    <span class="marquee-item">Order via WhatsApp</span>
+    <span class="marquee-item">Chat: 07062921566</span>
+    <span class="marquee-item">New Arrivals</span>
+    <span class="marquee-item">Free Delivery on Orders ₦40k+</span>
+    <span class="marquee-item">Islamic Wears · Home Gadgets</span>
+    <span class="marquee-item">Lagos & Ogun State Delivery</span>
+    <span class="marquee-item">Order via WhatsApp</span>
+    <span class="marquee-item">Chat: 07062921566</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">New Collection 2025</div>
+      <h1>Elegant<br><em>Islamic Wear</em></h1>
+      <p>Modest, stylish, and crafted for the modern Muslim woman and man. Abayas, Jilbabs, Jubbas, and more — delivered to your door in Lagos and Ogun State.</p>
+      <a href="#wears" class="btn-primary">Shop Collection →</a>
+      <div class="hero-products" style="margin-top:28px">
+        <div class="hero-prod-thumb"><div class="prod-placeholder" style="background:linear-gradient(135deg,#2a2a2a,#1a1a1a)"><span>👘</span></div></div>
+        <div class="hero-prod-thumb"><div class="prod-placeholder" style="background:linear-gradient(135deg,#7a8f52,#5c6e3a)"><span>🕌</span></div></div>
+        <div class="hero-prod-thumb"><div class="prod-placeholder" style="background:linear-gradient(135deg,#d4c0a8,#a89070)"><span>🧣</span></div></div>
+        <div class="hero-prod-thumb"><div class="prod-placeholder" style="background:linear-gradient(135deg,#7a5c3a,#5c3d1e)"><span>👗</span></div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-eyebrow">Home & Gadgets</div>
+      <h2>Upgrade Your<br><em>Home Today</em></h2>
+      <p>From digital scales and drying racks to wall clocks and inflatable sofas — practical products at prices that work for Nigerian families.</p>
+      <a href="#gadgets" class="btn-outline">Explore Gadgets →</a>
+      <div class="hero-products" style="margin-top:28px">
+        <div class="hero-prod-thumb"><img src="prod_scale_bathroom.jpg" alt="Bathroom Scale" loading="lazy"/></div>
+        <div class="hero-prod-thumb"><img src="prod_wall_clock_sun.jpg" alt="Wall Clock" loading="lazy"/></div>
+        <div class="hero-prod-thumb"><img src="prod_inflatable_sofa.jpg" alt="Inflatable Sofa" loading="lazy"/></div>
+        <div class="hero-prod-thumb"><img src="prod_kitchen_scale.jpg" alt="Kitchen Scale" loading="lazy"/></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COLLECTION BANNERS -->
+<div class="banners">
+  <div class="banner banner-f">
+    <h2>Women's Collection</h2>
+    <p>Abayas, Hijabs, Jilbabs & Kaftans</p>
+    <a href="#" class="btn-primary">Shop Women →</a>
+  </div>
+  <div class="banner banner-m">
+    <h2>Men's Collection</h2>
+    <p>Jubbas, Kaftans & Thobes</p>
+    <a href="#" class="btn-gold">Shop Men →</a>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-cell"><span class="trust-icon">🚚</span><div><strong>Free Shipping</strong><span>Orders above ₦40,000</span></div></div>
+    <div class="trust-cell"><span class="trust-icon">🔒</span><div><strong>Secure Payment</strong><span>100% Safe Checkout</span></div></div>
+    <div class="trust-cell"><span class="trust-icon">💬</span><div><strong>WhatsApp Support</strong><span>Orders & enquiries via chat</span></div></div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<div class="section">
+  <div class="sec-head"><h2>Browse by Category</h2><a href="#">All Categories →</a></div>
+  <div class="cats">
+    <div class="cat-item"><div class="cat-circle c1">👘</div><h3>Abayas</h3><span>48 items</span></div>
+    <div class="cat-item"><div class="cat-circle c2">🕌</div><h3>Jubbas</h3><span>32 items</span></div>
+    <div class="cat-item"><div class="cat-circle c3">🧣</div><h3>Hijabs</h3><span>60 items</span></div>
+    <div class="cat-item"><div class="cat-circle c4">⚖️</div><h3>Scales</h3><span>8 items</span></div>
+    <div class="cat-item"><div class="cat-circle c5">🕐</div><h3>Clocks</h3><span>12 items</span></div>
+    <div class="cat-item"><div class="cat-circle c6">🏠</div><h3>Home Goods</h3><span>38 items</span></div>
+  </div>
+</div>
+
+<!-- GADGETS WITH REAL IMAGES -->
+<div class="section" id="gadgets">
+  <div class="sec-head"><h2>Home Gadgets</h2><a href="#">View All →</a></div>
+  <div class="prod-grid prod-grid-5">
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <span class="prod-badge new">New</span>
+        <button class="wishlist-btn">♡</button>
+        <img src="prod_scale_bathroom.jpg" alt="iScale SE Bathroom Scale"/>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Bathroom · Scale</div>
+        <h3>iScale SE Digital Bathroom Scale</h3>
+        <a href="https://wa.me/2347062921566" target="_blank" class="wa-btn">💬 Enquire on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <span class="prod-badge">Hot</span>
+        <button class="wishlist-btn">♡</button>
+        <img src="prod_heat_sealer.jpg" alt="Mini Heat Bag Sealer"/>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Kitchen · Sealer</div>
+        <h3>Mini Heat Bag Sealer – 3 Colours</h3>
+        <a href="https://wa.me/2347062921566" target="_blank" class="wa-btn">💬 Enquire on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <button class="wishlist-btn">♡</button>
+        <img src="prod_drying_rack.jpg" alt="3-Tier Clothes Drying Rack"/>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Laundry · Rack</div>
+        <h3>3-Tier Clothes Drying Rack with Wheels</h3>
+        <a href="https://wa.me/2347062921566" target="_blank" class="wa-btn">💬 Enquire on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <span class="prod-badge sale">Sale</span>
+        <button class="wishlist-btn">♡</button>
+        <img src="prod_kinoki_box.jpg" alt="Kinoki Detox Foot Pads"/>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Wellness · Detox</div>
+        <h3>Kinoki Cleansing Detox Foot Pads – 10 Pack</h3>
+        <a href="https://wa.me/2347062921566" target="_blank" class="wa-btn">💬 Enquire on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <button class="wishlist-btn">♡</button>
+        <img src="prod_wall_clock_sun.jpg" alt="Gold Sunflower Wall Clock"/>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Decor · Clock</div>
+        <h3>Gold Sunflower Quartz Wall Clock</h3>
+        <a href="https://wa.me/2347062921566" target="_blank" class="wa-btn">💬 Enquire on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <span class="prod-badge new">New</span>
+        <button class="wishlist-btn">♡</button>
+        <img src="prod_usb_kit.jpg" alt="Pink USB Cable Kit"/>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Tech · Accessories</div>
+        <h3>All-in-One USB Cable Kit – Rose Gold</h3>
+        <a href="https://wa.me/2347062921566" target="_blank" class="wa-btn">💬 Enquire on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <button class="wishlist-btn">♡</button>
+        <img src="prod_kitchen_scale.jpg" alt="SF-400 Kitchen Scale"/>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Kitchen · Scale</div>
+        <h3>SF-400 Electronic Kitchen Scale (10kg)</h3>
+        <a href="https://wa.me/2347062921566" target="_blank" class="wa-btn">💬 Enquire on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <span class="prod-badge sale">Sale</span>
+        <button class="wishlist-btn">♡</button>
+        <img src="prod_inflatable_sofa.jpg" alt="Inflatable Sofa Chair"/>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Furniture · Sofa</div>
+        <h3>Inflatable Lounge Sofa Chair + Ottoman</h3>
+        <a href="https://wa.me/2347062921566" target="_blank" class="wa-btn">💬 Enquire on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <button class="wishlist-btn">♡</button>
+        <img src="prod_wall_clock_baroque.jpg" alt="Gold Baroque Wall Clock"/>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Decor · Clock</div>
+        <h3>Gold Baroque Quartz Wall Clock</h3>
+        <a href="https://wa.me/2347062921566" target="_blank" class="wa-btn">💬 Enquire on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <button class="wishlist-btn">♡</button>
+        <img src="prod_kinoki_use.jpg" alt="Kinoki In Use"/>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Wellness · Detox</div>
+        <h3>Kinoki Detox Pads – How to Use Guide Set</h3>
+        <a href="https://wa.me/2347062921566" target="_blank" class="wa-btn">💬 Enquire on WhatsApp</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ISLAMIC WEARS with placeholder art -->
+<div class="section" id="wears">
+  <div class="sec-head"><h2>Islamic Wears</h2><a href="#">View All →</a></div>
+  <div class="prod-grid">
+
+    <div class="prod-card">
+      <div class="prod-img-wrap" style="background:linear-gradient(160deg,#2a2a2a,#1a1a1a)">
+        <span class="prod-badge new">New</span>
+        <button class="wishlist-btn">♡</button>
+        <div class="prod-placeholder"><span>👘</span><span>Abaya – Black</span></div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Women · Abaya</div>
+        <h3>Elegant Black Abaya – Flowy Fabric</h3>
+        <a href="https://wa.me/2347062921566" target="_blank" class="wa-btn">💬 Enquire on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap" style="background:linear-gradient(160deg,#7a8f52,#5c6e3a)">
+        <button class="wishlist-btn">♡</button>
+        <div class="prod-placeholder"><span>🕌</span><span>Jubba – Olive</span></div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Men · Jubba</div>
+        <h3>Premium Olive Jubbah – Linen Blend</h3>
+        <a href="https://wa.me/2347062921566" target="_blank" class="wa-btn">💬 Enquire on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap" style="background:linear-gradient(160deg,#c8b0a0,#a09080)">
+        <span class="prod-badge sale">Sale</span>
+        <button class="wishlist-btn">♡</button>
+        <div class="prod-placeholder"><span>🧣</span><span>Jersey Hijab</span></div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Women · Hijab</div>
+        <h3>Premium Jersey Hijab – Multiple Colours</h3>
+        <a href="https://wa.me/2347062921566" target="_blank" class="wa-btn">💬 Enquire on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap" style="background:linear-gradient(160deg,#7a5038,#5c3820)">
+        <button class="wishlist-btn">♡</button>
+        <div class="prod-placeholder"><span>👗</span><span>Kaftan</span></div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Women · Kaftan</div>
+        <h3>Embroidered Kaftan – Brown & Gold</h3>
+        <a href="https://wa.me/2347062921566" target="_blank" class="wa-btn">💬 Enquire on WhatsApp</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PROMO SPLIT -->
+<div class="promo-split">
+  <div class="promo-card">
+    <div class="promo-img" style="background:linear-gradient(135deg,#ede3d0 0%,#c9a84c 100%)">
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:100px;opacity:.25">🕌</div>
+    </div>
+    <div class="promo-body">
+      <p>Special Offer</p>
+      <h3>20% Off All Abayas<br>This Week</h3>
+      <a href="#">Shop the Sale →</a>
+    </div>
+  </div>
+  <div class="promo-card">
+    <div class="promo-img" style="background:linear-gradient(135deg,#3d4a26 0%,#6b3a1f 100%)">
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:100px;opacity:.2">🏠</div>
+    </div>
+    <div class="promo-body">
+      <p>New In</p>
+      <h3>Home Gadgets<br>Under ₦10,000</h3>
+      <a href="#">View Products →</a>
+    </div>
+  </div>
+</div>
+
+<!-- WHATSAPP CTA -->
+<div class="wa-cta">
+  <div class="wa-cta-inner">
+    <div class="wa-cta-icon">
+      <svg width="52" height="52" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </div>
+    <div class="wa-cta-text">
+      <h2>All Orders Go Through WhatsApp</h2>
+      <p>To place an order, ask about availability, check current prices, or get delivery info — send us a message. We respond fast.</p>
+      <div class="wa-cta-btns">
+        <a href="https://wa.me/2347062921566" target="_blank" class="btn-wa-big">Chat with Us &nbsp;· &nbsp;07062921566</a>
+        <div class="wa-info-pills">
+          <span>Order Tracking</span>
+          <span>Product Enquiries</span>
+          <span>Delivery Info</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo-wrap">
+        <svg width="38" height="38" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="23" cy="23" r="21" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.4"/>
+          <circle cx="23" cy="23" r="18" fill="#3d4a26"/>
+          <g fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.9">
+            <polygon points="23,8 25.5,16.5 34,14 28,21 34,28 25.5,25.5 23,34 20.5,25.5 12,28 18,21 12,14 20.5,16.5" fill="none"/>
+          </g>
+          <g fill="#c9a84c" opacity="0.85">
+            <ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(0 23 23)"/>
+            <ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(45 23 23)"/>
+            <ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(90 23 23)"/>
+            <ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(135 23 23)"/>
+          </g>
+          <circle cx="23" cy="23" r="2.8" fill="#fff"/>
+          <text x="23" y="27.5" text-anchor="middle" font-family="serif" font-size="6.5" font-weight="700" fill="#fff" letter-spacing="1">AA</text>
+        </svg>
+        <div class="logo-text footer-logo-wrap">
+          <strong style="font-family:'Playfair Display',serif;font-size:19px;color:#ede3d0">AishaAde</strong>
+          <span style="font-size:9.5px;letter-spacing:.17em;text-transform:uppercase;color:rgba(237,227,208,.4)">Islamic Wears & Home</span>
+        </div>
+      </div>
+      <p class="footer-about">Quality Islamic fashion and home appliances delivered across Lagos and Ogun State. We stock what Nigerian families actually need — at honest prices.</p>
+      <div class="social">
+        <a href="#">f</a><a href="#">in</a><a href="#">tw</a><a href="#">yt</a>
+      </div>
+    </div>
+
+    <div class="fc">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="fc">
+      <h4>Customer Service</h4>
+      <ul>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+
+    <div class="fc">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">Women</a></li>
+        <li><a href="#">Men</a></li>
+        <li><a href="#">Home Gadgets</a></li>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Sale</a></li>
+      </ul>
+    </div>
+
+    <div class="fc">
+      <h4>Contact Us</h4>
+      <ul class="fc-contact">
+        <li><span class="ic">📞</span><span>07062921566</span></li>
+        <li><span class="ic">📧</span><span>info@aishaade.com</span></li>
+        <li><span class="ic">📍</span><span>Ajuwan, Lagos State</span></li>
+        <li><span class="ic">📍</span><span>Giwa Junction, Oke-Aro, Ogun State</span></li>
+        <li><span class="ic">🕐</span><span>Mon – Sat: 8am – 7pm</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2025 AishaAde. All rights reserved.</span>
+    <span>Crafted with care for the Muslim community in Nigeria</span>
+  </div>
+</footer>
+
+<script>
+let cartCount = 0;
+function addCart(btn){
+  cartCount++;
+  document.getElementById('cartCount').textContent = cartCount;
+  btn.textContent = 'Added ✓';
+  btn.classList.add('added');
+  showToast();
+  setTimeout(()=>{
+    btn.textContent = 'Add to Cart';
+    btn.classList.remove('added');
+  }, 1600);
+}
+function showToast(){
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2200);
+}
+function subscribe(){
+  const inp = document.getElementById('nlEmail');
+  if(inp.value && inp.value.includes('@')){
+    const btn = inp.nextElementSibling;
+    btn.textContent = 'Subscribed ✓';
+    btn.style.background = '#5c6e3a';
+    btn.style.color = '#fff';
+    inp.value = '';
+    setTimeout(()=>{btn.textContent='Subscribe';btn.style.background='';btn.style.color='';}, 2500);
+  }
+}
+// Wishlist toggle
+document.querySelectorAll('.wishlist-btn').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    this.textContent = this.textContent==='♡' ? '♥' : '♡';
+    this.style.color = this.textContent==='♥' ? '#c0392b' : '';
+  });
+});
+</script>
+</body>
+</html>
