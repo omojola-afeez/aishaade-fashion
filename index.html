@@ -10,220 +10,335 @@
   --cream:#f7f2ea;--sand:#ede3d0;--olive:#5c6e3a;--olive-dark:#3d4a26;
   --olive-mid:#7a8f52;--brown:#6b3a1f;--gold:#c9a84c;--gold-light:#e8c96a;
   --charcoal:#1e1e1e;--white:#fff;--muted:#8a7e6e;--border:#ddd3bb;
+  --wa:#25d366;--wa-dark:#1da851;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal);font-size:15px;line-height:1.65;overflow-x:hidden}
+
+/* ── TOPBAR ── */
 .topbar{background:var(--olive-dark);color:rgba(237,227,208,.9);text-align:center;font-size:12px;letter-spacing:.09em;padding:8px 20px}
 .topbar a{color:var(--gold-light);text-decoration:none;font-weight:600}
-nav{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+
+/* ── NAV ── */
+nav{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:300}
 .nav-inner{max-width:1300px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:72px}
 .logo-wrap{display:flex;align-items:center;gap:11px;text-decoration:none}
-.logo-svg{width:46px;height:46px;flex-shrink:0}
 .logo-text{display:flex;flex-direction:column;line-height:1}
-.logo-text strong{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--olive-dark);letter-spacing:.02em}
-.logo-text span{font-size:10px;font-weight:400;color:var(--muted);letter-spacing:.18em;text-transform:uppercase;margin-top:1px}
-.nav-links{display:flex;gap:30px;list-style:none}
+.logo-text strong{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--olive-dark)}
+.logo-text span{font-size:10px;color:var(--muted);letter-spacing:.18em;text-transform:uppercase;margin-top:1px}
+.nav-links{display:flex;gap:28px;list-style:none}
 .nav-links a{text-decoration:none;color:var(--charcoal);font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;transition:color .2s;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--olive);transition:width .25s}
 .nav-links a:hover{color:var(--olive)}
 .nav-links a:hover::after{width:100%}
-.nav-actions{display:flex;align-items:center;gap:14px}
-.nav-btn{background:none;border:none;cursor:pointer;color:var(--charcoal);line-height:1;transition:color .2s;display:flex;align-items:center;text-decoration:none}
-.nav-btn:hover{color:var(--olive)}
-.wa-nav{background:#25d366;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;color:#fff;transition:background .2s}
-.wa-nav:hover{background:#1da851}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.nav-icon-btn{background:none;border:none;cursor:pointer;color:var(--charcoal);display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;transition:background .2s,color .2s;text-decoration:none;position:relative}
+.nav-icon-btn:hover{background:var(--sand);color:var(--olive)}
+.wa-icon-btn{background:var(--wa);color:#fff !important}
+.wa-icon-btn:hover{background:var(--wa-dark) !important}
+
+/* Cart badge on nav */
+.nav-cart-badge{position:absolute;top:-2px;right:-2px;background:var(--brown);color:#fff;font-size:9px;min-width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;padding:0 3px;line-height:1}
+
+/* ── MARQUEE ── */
 .marquee-wrap{background:var(--olive-dark);padding:11px 0;overflow:hidden}
 .marquee-track{display:flex;animation:marquee 34s linear infinite;width:max-content}
-.marquee-item{white-space:nowrap;color:var(--sand);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:0 40px;border-right:1px solid rgba(255,255,255,.15)}
+.marquee-item{white-space:nowrap;color:var(--sand);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:0 38px;border-right:1px solid rgba(255,255,255,.15)}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--olive-dark);color:#fff;padding:13px 32px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;font-family:'DM Sans',sans-serif;font-weight:600;border:2px solid var(--olive-dark);transition:all .25s;cursor:pointer}
+
+/* ── BUTTONS ── */
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--olive-dark);color:#fff;padding:13px 30px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;font-family:'DM Sans',sans-serif;font-weight:600;border:2px solid var(--olive-dark);transition:all .25s;cursor:pointer}
 .btn-primary:hover{background:transparent;color:var(--olive-dark)}
-.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--brown);padding:13px 32px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;font-family:'DM Sans',sans-serif;font-weight:600;border:2px solid var(--brown);transition:all .25s;cursor:pointer}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--brown);padding:13px 30px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;font-family:'DM Sans',sans-serif;font-weight:600;border:2px solid var(--brown);transition:all .25s;cursor:pointer}
 .btn-outline:hover{background:var(--brown);color:#fff}
-.btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--charcoal);padding:13px 32px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;font-family:'DM Sans',sans-serif;font-weight:600;border:2px solid var(--gold);transition:all .25s;cursor:pointer}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--charcoal);padding:13px 30px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;font-family:'DM Sans',sans-serif;font-weight:600;border:2px solid var(--gold);transition:all .25s;cursor:pointer}
 .btn-gold:hover{background:transparent;color:var(--gold)}
+
+/* ── HERO ── */
 .hero{background:linear-gradient(135deg,#ede3d0 0%,#e4d8c0 60%,#d8ccb0 100%);position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%235c6e3a' fill-opacity='0.04'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z'/%3E%3C/g%3E%3C/svg%3E") repeat;pointer-events:none}
-.hero-grid{max-width:1300px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1fr 1fr;min-height:500px}
-.hero-left{display:flex;flex-direction:column;justify-content:center;padding:70px 60px 70px 0;border-right:1px solid rgba(180,160,120,.3)}
-.hero-right{display:flex;flex-direction:column;justify-content:center;padding:70px 0 70px 60px}
+.hero-grid{max-width:1300px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1fr 1fr;min-height:490px}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:64px 56px 64px 0;border-right:1px solid rgba(180,160,120,.3)}
+.hero-right{display:flex;flex-direction:column;justify-content:center;padding:64px 0 64px 56px}
 .hero-eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--olive);font-weight:600;margin-bottom:14px}
 .hero-left h1{font-family:'Playfair Display',serif;font-size:54px;line-height:1.02;color:var(--brown);margin-bottom:16px;font-weight:700}
 .hero-left h1 em{font-style:italic;color:var(--olive-dark)}
-.hero-left p{font-size:14px;color:var(--muted);margin-bottom:30px;max-width:340px;line-height:1.75}
+.hero-left p,.hero-right p{font-size:14px;color:var(--muted);margin-bottom:28px;max-width:340px;line-height:1.75}
 .hero-right h2{font-family:'Playfair Display',serif;font-size:40px;line-height:1.1;color:var(--charcoal);margin-bottom:12px;font-weight:500}
 .hero-right h2 em{color:var(--olive-dark);font-style:italic}
-.hero-right p{font-size:14px;color:var(--muted);margin-bottom:24px;max-width:320px}
-.hero-thumbs{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
-.hero-thumb{width:82px;height:82px;border-radius:6px;overflow:hidden;border:1px solid var(--border);flex-shrink:0;cursor:pointer;transition:transform .2s,box-shadow .2s;background:#f0ebe2}
-.hero-thumb:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.hero-thumbs{display:flex;gap:10px;margin-top:22px}
+.hero-thumb{width:80px;height:80px;border-radius:6px;overflow:hidden;border:1px solid var(--border);flex-shrink:0;cursor:pointer;transition:transform .2s,box-shadow .2s;background:#f0ebe2}
+.hero-thumb:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.13)}
 .hero-thumb img{width:100%;height:100%;object-fit:cover}
-.banners{max-width:1300px;margin:36px auto 0;padding:0 28px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.banner{border-radius:3px;padding:44px 40px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;min-height:210px}
+
+/* ── BANNERS ── */
+.banners{max-width:1300px;margin:34px auto 0;padding:0 28px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.banner{border-radius:3px;padding:42px 38px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;min-height:200px}
 .banner-f{background:linear-gradient(120deg,#ddd0b8,#c8b898)}
 .banner-m{background:linear-gradient(120deg,#6b8048,#3d4a26)}
-.banner h2{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;margin-bottom:6px}
-.banner p{font-size:13px;margin-bottom:22px;opacity:.85}
+.banner h2{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;margin-bottom:6px}
+.banner p{font-size:13px;margin-bottom:20px;opacity:.85}
 .banner-f h2,.banner-f p{color:var(--brown)}
 .banner-m h2,.banner-m p{color:#fff}
-.banner::after{content:'';position:absolute;right:-50px;top:50%;transform:translateY(-50%);width:200px;height:200px;border-radius:50%;border:50px solid rgba(255,255,255,.08);pointer-events:none}
-.trust{max-width:1300px;margin:32px auto 0;padding:0 28px}
+.banner::after{content:'';position:absolute;right:-50px;top:50%;transform:translateY(-50%);width:200px;height:200px;border-radius:50%;border:50px solid rgba(255,255,255,.07);pointer-events:none}
+
+/* ── TRUST ── */
+.trust{max-width:1300px;margin:30px auto 0;padding:0 28px}
 .trust-inner{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);background:var(--border);gap:1px;border-radius:4px;overflow:hidden}
-.trust-cell{background:var(--white);padding:20px 16px;display:flex;align-items:center;gap:12px}
+.trust-cell{background:var(--white);padding:19px 16px;display:flex;align-items:center;gap:12px}
 .trust-icon{font-size:22px;flex-shrink:0}
 .trust-cell strong{display:block;font-size:13px;font-weight:600}
 .trust-cell span{font-size:11px;color:var(--muted)}
-.section{max-width:1300px;margin:0 auto;padding:60px 28px 0}
-.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:30px;border-bottom:1px solid var(--border);padding-bottom:16px}
-.sec-head h2{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--charcoal)}
+
+/* ── SECTIONS ── */
+.section{max-width:1300px;margin:0 auto;padding:56px 28px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;border-bottom:1px solid var(--border);padding-bottom:14px}
+.sec-head h2{font-family:'Playfair Display',serif;font-size:32px;font-weight:700}
 .sec-head a{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);text-decoration:none;font-weight:500}
 .sec-head a:hover{text-decoration:underline}
-.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+
+/* ── CATEGORIES ── */
+.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
 .cat-item{text-align:center;cursor:pointer}
-.cat-circle{width:100%;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;border:2px solid transparent;transition:border-color .2s,transform .2s;margin:0 auto 12px}
+.cat-circle{aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;border:2px solid transparent;transition:border-color .2s,transform .2s;margin:0 auto 10px}
 .cat-item:hover .cat-circle{border-color:var(--olive);transform:scale(1.05)}
 .c1{background:linear-gradient(135deg,#ede3d0,#d8ccb0)}.c2{background:linear-gradient(135deg,#8a9e60,#5c6e3a)}
 .c3{background:linear-gradient(135deg,#d4c0a8,#b8a088)}.c4{background:linear-gradient(135deg,#4a4a4a,#1e1e1e)}
 .c5{background:linear-gradient(135deg,#c9a84c,#9a7c30)}.c6{background:linear-gradient(135deg,#8c6240,#5c3a1e)}
-.cat-item h3{font-size:13px;font-weight:500;margin-bottom:2px}
+.cat-item h3{font-size:12.5px;font-weight:500;margin-bottom:2px}
 .cat-item span{font-size:11px;color:var(--muted)}
+
+/* ── PRODUCT GRID ── */
 .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .prod-grid-5{grid-template-columns:repeat(5,1fr)}
-.prod-card{background:var(--white);border:1px solid var(--border);border-radius:2px;overflow:hidden;cursor:pointer;transition:box-shadow .25s,transform .25s;position:relative}
+.prod-card{background:var(--white);border:1px solid var(--border);border-radius:3px;overflow:hidden;transition:box-shadow .25s,transform .25s;position:relative;display:flex;flex-direction:column}
 .prod-card:hover{box-shadow:0 10px 36px rgba(0,0,0,.11);transform:translateY(-4px)}
-.prod-img-wrap{width:100%;aspect-ratio:1;overflow:hidden;position:relative;background:#f0ebe2}
-.prod-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.prod-card:hover .prod-img-wrap img{transform:scale(1.07)}
-.prod-badge{position:absolute;top:10px;left:10px;background:var(--olive);color:#fff;font-size:9px;letter-spacing:.1em;padding:3px 8px;text-transform:uppercase;font-weight:600;z-index:2}
-.prod-badge.new{background:var(--olive-mid)}.prod-badge.hot{background:var(--brown)}
-.wishlist-btn{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.88);border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;z-index:2;transition:background .2s}
-.wishlist-btn:hover{background:#fff}
-.prod-info{padding:13px 13px 16px}
+.prod-img-wrap{width:100%;aspect-ratio:1;overflow:hidden;position:relative;background:#f0ebe2;flex-shrink:0}
+.prod-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s;display:block}
+.prod-card:hover .prod-img-wrap img{transform:scale(1.06)}
+.prod-badge{position:absolute;top:10px;left:10px;color:#fff;font-size:9px;letter-spacing:.1em;padding:3px 8px;text-transform:uppercase;font-weight:700;z-index:2;border-radius:2px}
+.badge-new{background:var(--olive-mid)}
+.badge-hot{background:var(--brown)}
+.wishlist-btn{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.9);border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;z-index:2;transition:all .2s}
+.wishlist-btn:hover{background:#fff;transform:scale(1.1)}
+.wishlist-btn.active{color:#e74c3c}
+.prod-info{padding:13px 13px 0;flex:1;display:flex;flex-direction:column}
 .prod-cat{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
-.prod-info h3{font-size:13px;font-weight:500;color:var(--charcoal);margin-bottom:5px;line-height:1.35}
-.prod-desc{font-size:11px;color:var(--muted);margin-bottom:11px;line-height:1.5}
-.wa-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;background:#25d366;color:#fff;border:none;padding:10px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;font-family:'DM Sans',sans-serif;font-weight:700;cursor:pointer;transition:background .2s;text-decoration:none}
-.wa-btn:hover{background:#1da851}
+.prod-info h3{font-size:13px;font-weight:500;color:var(--charcoal);margin-bottom:5px;line-height:1.35;flex:1}
+.prod-desc{font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.5}
+
+/* Product action buttons */
+.prod-actions{display:grid;grid-template-columns:1fr 42px;gap:0;margin-top:auto}
+.add-cart-btn{background:var(--olive-dark);color:#fff;border:none;padding:10px 8px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;font-family:'DM Sans',sans-serif;font-weight:700;cursor:pointer;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:5px}
+.add-cart-btn:hover{background:var(--olive)}
+.add-cart-btn.in-cart{background:var(--olive);position:relative}
+.add-cart-btn.in-cart::after{content:'✓';margin-left:4px}
+.quick-wa-btn{background:var(--wa);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;border-left:1px solid rgba(255,255,255,.2)}
+.quick-wa-btn:hover{background:var(--wa-dark)}
+
+/* Placeholder for items without real photos */
 .prod-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
-.prod-placeholder span:first-child{font-size:52px;opacity:.7}
-.prod-placeholder span:last-child{font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-.promo-split{max-width:1300px;margin:60px auto 0;padding:0 28px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.promo-card{border-radius:3px;overflow:hidden;position:relative;min-height:260px;display:flex;align-items:flex-end}
-.promo-img{position:absolute;inset:0;background-size:cover;background-position:center}
-.promo-img::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.65) 0%,rgba(0,0,0,0) 65%)}
-.promo-body{position:relative;z-index:1;padding:26px 28px 30px;width:100%}
-.promo-body p{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:6px}
+.prod-placeholder .icon{font-size:52px;opacity:.7}
+.prod-placeholder .lbl{font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+/* ── PROMO SPLIT ── */
+.promo-split{max-width:1300px;margin:56px auto 0;padding:0 28px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.promo-card{border-radius:3px;overflow:hidden;position:relative;min-height:250px;display:flex;align-items:flex-end}
+.promo-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.promo-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.68) 0%,rgba(0,0,0,0) 65%)}
+.promo-body{position:relative;z-index:1;padding:24px 26px 28px;width:100%}
+.promo-body p{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px}
 .promo-body h3{font-family:'Playfair Display',serif;font-size:26px;color:#fff;margin-bottom:14px;font-weight:700}
-.promo-body a{font-size:12px;color:var(--gold-light);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;font-weight:600;border-bottom:1px solid var(--gold-light);padding-bottom:2px}
-.wa-cta{background:linear-gradient(135deg,#1a2e10 0%,#2d4a1a 100%);margin-top:60px;padding:60px 28px}
-.wa-cta-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;gap:40px}
-.wa-cta-icon{flex-shrink:0;width:80px;height:80px;background:rgba(255,255,255,.08);border-radius:50%;display:flex;align-items:center;justify-content:center}
-.wa-cta-text h2{font-family:'Playfair Display',serif;font-size:32px;color:var(--sand);font-weight:700;margin-bottom:10px}
-.wa-cta-text p{color:rgba(237,227,208,.65);font-size:14px;margin-bottom:22px;line-height:1.7;max-width:600px}
-.wa-cta-btns{display:flex;flex-direction:column;gap:14px}
-.btn-wa-big{display:inline-flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:14px 30px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.04em;transition:background .2s;width:fit-content}
-.btn-wa-big:hover{background:#1da851}
-.wa-info-pills{display:flex;gap:8px;flex-wrap:wrap}
-.wa-info-pills span{background:rgba(255,255,255,.1);color:rgba(237,227,208,.8);font-size:11px;padding:5px 13px;border-radius:20px;letter-spacing:.05em}
-footer{background:var(--charcoal);color:rgba(237,227,208,.7);padding:60px 28px 28px}
-.footer-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:44px;margin-bottom:44px}
-.f-brand p{font-size:13px;line-height:1.75;color:rgba(237,227,208,.6);margin:14px 0 20px}
-.social{display:flex;gap:10px}
-.social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:var(--sand);text-decoration:none;font-size:13px;font-weight:600;transition:border-color .2s,color .2s}
-.social a:hover{border-color:var(--gold);color:var(--gold)}
-.fc h4{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);font-weight:600;margin-bottom:16px}
-.fc ul{list-style:none}.fc li{margin-bottom:9px}
-.fc a{color:rgba(237,227,208,.55);text-decoration:none;font-size:13px;transition:color .2s}
-.fc a:hover{color:var(--sand)}
-.fc-contact li{display:flex;gap:10px;font-size:13px;color:rgba(237,227,208,.6);margin-bottom:10px;align-items:flex-start}
-.fc-contact .ic{color:var(--gold);flex-shrink:0;margin-top:2px}
-.footer-bottom{max-width:1300px;margin:0 auto;border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;font-size:12px;color:rgba(237,227,208,.35)}
-/* AI */
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.hero-left{animation:fadeUp .7s ease both}
-.hero-right{animation:fadeUp .7s .15s ease both}
+.promo-body a{font-size:12px;color:var(--gold-light);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;font-weight:600;border-bottom:1px solid rgba(232,201,106,.5);padding-bottom:2px;transition:border-color .2s}
+.promo-body a:hover{border-color:var(--gold-light)}
+
+/* ── WA CTA ── */
+.wa-cta{background:linear-gradient(135deg,#1a2e10 0%,#2d4a1a 100%);margin-top:56px;padding:56px 28px}
+.wa-cta-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;gap:38px}
+.wa-cta-icon{flex-shrink:0;width:76px;height:76px;background:rgba(255,255,255,.08);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.wa-cta-text h2{font-family:'Playfair Display',serif;font-size:30px;color:var(--sand);font-weight:700;margin-bottom:10px}
+.wa-cta-text p{color:rgba(237,227,208,.62);font-size:14px;margin-bottom:20px;line-height:1.7;max-width:600px}
+.btn-wa-big{display:inline-flex;align-items:center;gap:10px;background:var(--wa);color:#fff;padding:14px 28px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.04em;transition:background .2s}
+.btn-wa-big:hover{background:var(--wa-dark)}
+.wa-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.wa-pill{background:rgba(255,255,255,.1);color:rgba(237,227,208,.78);font-size:11px;padding:5px 12px;border-radius:20px;letter-spacing:.05em}
+
+/* ── CART DRAWER ── */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:800;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(3px)}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:100vw;background:#fff;z-index:801;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-8px 0 40px rgba(0,0,0,.15)}
+.cart-drawer.open{transform:translateX(0)}
+.cart-header{background:var(--olive-dark);color:#fff;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.cart-header h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;display:flex;align-items:center;gap:10px}
+.cart-header h3 span{background:var(--gold);color:var(--charcoal);font-size:11px;font-family:'DM Sans',sans-serif;font-weight:700;padding:3px 8px;border-radius:20px}
+.cart-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:24px;cursor:pointer;line-height:1;padding:0;transition:color .2s}
+.cart-close:hover{color:#fff}
+.cart-body{flex:1;overflow-y:auto;padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.cart-empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.cart-empty span{font-size:52px;display:block;margin-bottom:14px}
+.cart-empty p{font-size:14px;line-height:1.6}
+.cart-item{display:flex;gap:14px;padding:14px;border:1px solid var(--border);border-radius:6px;background:#faf7f2;position:relative}
+.cart-item-img{width:72px;height:72px;border-radius:4px;overflow:hidden;flex-shrink:0;background:#f0ebe2;border:1px solid var(--border)}
+.cart-item-img img{width:100%;height:100%;object-fit:cover}
+.cart-item-info{flex:1;min-width:0}
+.cart-item-info h4{font-size:13px;font-weight:600;color:var(--charcoal);margin-bottom:3px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cart-item-info p{font-size:11px;color:var(--muted);margin-bottom:8px}
+.cart-item-qty{display:flex;align-items:center;gap:0;border:1px solid var(--border);border-radius:4px;overflow:hidden;width:fit-content}
+.qty-btn{background:var(--cream);border:none;width:28px;height:28px;cursor:pointer;font-size:14px;font-weight:700;color:var(--charcoal);transition:background .2s;display:flex;align-items:center;justify-content:center}
+.qty-btn:hover{background:var(--sand)}
+.qty-val{width:32px;text-align:center;font-size:13px;font-weight:600;color:var(--charcoal);background:#fff;border:none;border-left:1px solid var(--border);border-right:1px solid var(--border);height:28px;line-height:28px}
+.cart-remove{position:absolute;top:10px;right:10px;background:none;border:none;cursor:pointer;color:var(--muted);font-size:16px;transition:color .2s;line-height:1}
+.cart-remove:hover{color:#e74c3c}
+.cart-footer{padding:20px 22px;border-top:1px solid var(--border);flex-shrink:0;background:#faf7f2}
+.cart-summary{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.cart-summary-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+.cart-summary-row.total{font-size:14px;font-weight:700;color:var(--charcoal);border-top:1px solid var(--border);padding-top:10px;margin-top:4px}
+.cart-note{font-size:11.5px;color:var(--muted);background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2);border-radius:6px;padding:10px 12px;margin-bottom:14px;line-height:1.5}
+.cart-note strong{color:var(--olive-dark)}
+.btn-checkout{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--wa);color:#fff;border:none;padding:15px;font-size:14px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s;text-decoration:none;letter-spacing:.03em}
+.btn-checkout:hover{background:var(--wa-dark)}
+.btn-clear-cart{display:flex;align-items:center;justify-content:center;width:100%;background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;padding:10px;font-family:'DM Sans',sans-serif;margin-top:6px;text-decoration:underline;transition:color .2s}
+.btn-clear-cart:hover{color:#e74c3c}
+
+/* Cart pulse animation */
+@keyframes cartPop{0%{transform:scale(1)}40%{transform:scale(1.4)}100%{transform:scale(1)}}
+.cart-pop{animation:cartPop .35s ease}
+
+/* Toast */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--olive-dark);color:#fff;padding:11px 22px;border-radius:30px;font-size:13px;font-weight:500;z-index:999;transition:transform .3s;pointer-events:none;display:flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ── AI ASSISTANT ── */
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
-.ai-fab{position:fixed;bottom:28px;right:28px;z-index:500;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
-.ai-bubble{background:var(--olive-dark);border:none;width:58px;height:58px;border-radius:50%;cursor:pointer;font-size:24px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,.25);transition:transform .2s,background .2s;animation:pulse 3s ease-in-out infinite}
+.ai-fab{position:fixed;bottom:28px;right:28px;z-index:700;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.ai-bubble{background:var(--olive-dark);border:none;width:56px;height:56px;border-radius:50%;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,.25);transition:transform .2s,background .2s;animation:pulse 3s ease-in-out infinite}
 .ai-bubble:hover{background:var(--olive);animation:none;transform:scale(1.1)}
-.ai-window{background:#fff;border-radius:14px;box-shadow:0 12px 52px rgba(0,0,0,.2);width:340px;display:none;flex-direction:column;overflow:hidden;border:1px solid var(--border);margin-bottom:8px}
+.ai-window{background:#fff;border-radius:14px;box-shadow:0 12px 52px rgba(0,0,0,.2);width:340px;display:none;flex-direction:column;overflow:hidden;border:1px solid var(--border);margin-bottom:6px}
 .ai-window.open{display:flex}
 .ai-header{background:var(--olive-dark);color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
 .ai-header-info{display:flex;align-items:center;gap:10px}
 .ai-avatar{width:36px;height:36px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
 .ai-header h4{font-size:14px;font-weight:600}
-.ai-header small{font-size:11px;opacity:.7;display:block;margin-top:1px}
-.ai-close-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:22px;cursor:pointer;line-height:1;padding:0}
-.ai-close-btn:hover{color:#fff}
-.ai-msgs{flex:1;padding:14px;display:flex;flex-direction:column;gap:9px;height:270px;overflow-y:auto;background:#f9f6f1}
-.ai-msg{max-width:84%;padding:10px 13px;border-radius:10px;font-size:13px;line-height:1.5}
-.ai-msg.bot{background:#fff;color:var(--charcoal);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:3px}
-.ai-msg.user{background:var(--olive-dark);color:#fff;align-self:flex-end;border-bottom-right-radius:3px}
-.ai-typing-row{display:none;padding:0 14px 8px}
-.ai-typing-dot{display:inline-flex;gap:4px;background:#fff;border:1px solid var(--border);padding:8px 14px;border-radius:10px;border-bottom-left-radius:3px}
-.ai-typing-dot span{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:blink 1.2s infinite}
-.ai-typing-dot span:nth-child(2){animation-delay:.2s}
-.ai-typing-dot span:nth-child(3){animation-delay:.4s}
-@keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
-.ai-chips-row{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px;border-top:1px solid var(--border);background:#faf7f2}
-.ai-chip{background:var(--cream);border:1px solid var(--border);color:var(--charcoal);font-size:11px;padding:5px 11px;border-radius:20px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s,border-color .2s}
-.ai-chip:hover{background:var(--sand);border-color:var(--olive)}
-.ai-inp-row{display:flex;border-top:1px solid var(--border);background:#fff}
-.ai-inp{flex:1;border:none;padding:13px 14px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--charcoal);outline:none;background:transparent}
-.ai-send-btn{background:var(--olive-dark);border:none;color:#fff;width:46px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s}
-.ai-send-btn:hover{background:var(--olive)}
+.ai-header small{font-size:11px;opacity:.65;display:block;margin-top:1px}
+.ai-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:22px;cursor:pointer;line-height:1}
+.ai-close:hover{color:#fff}
+.ai-msgs{flex:1;padding:14px;display:flex;flex-direction:column;gap:9px;height:265px;overflow-y:auto;background:#f9f6f1}
+.msg{max-width:84%;padding:10px 13px;border-radius:10px;font-size:13px;line-height:1.5}
+.msg.bot{background:#fff;color:var(--charcoal);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:3px}
+.msg.user{background:var(--olive-dark);color:#fff;align-self:flex-end;border-bottom-right-radius:3px}
+.ai-typing{display:none;padding:0 14px 8px}
+.typing-dots{display:inline-flex;gap:4px;background:#fff;border:1px solid var(--border);padding:8px 14px;border-radius:10px;border-bottom-left-radius:3px}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:blink 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.ai-chips{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px;border-top:1px solid var(--border);background:#faf7f2}
+.chip{background:var(--cream);border:1px solid var(--border);color:var(--charcoal);font-size:11px;padding:5px 11px;border-radius:20px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s}
+.chip:hover{background:var(--sand)}
+.ai-input-row{display:flex;border-top:1px solid var(--border);background:#fff}
+.ai-input{flex:1;border:none;padding:13px 14px;font-family:'DM Sans',sans-serif;font-size:13px;outline:none;background:transparent}
+.ai-send{background:var(--olive-dark);border:none;color:#fff;width:46px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s}
+.ai-send:hover{background:var(--olive)}
+
+/* ── FOOTER ── */
+footer{background:var(--charcoal);color:rgba(237,227,208,.7);padding:56px 28px 26px}
+.footer-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:44px;margin-bottom:40px}
+.f-brand p{font-size:13px;line-height:1.75;color:rgba(237,227,208,.58);margin:13px 0 18px}
+.social{display:flex;gap:10px}
+.social a{width:34px;height:34px;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:var(--sand);text-decoration:none;font-size:13px;font-weight:600;transition:border-color .2s,color .2s}
+.social a:hover{border-color:var(--gold);color:var(--gold)}
+.fc h4{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);font-weight:600;margin-bottom:14px}
+.fc ul{list-style:none}
+.fc li{margin-bottom:9px}
+.fc a{color:rgba(237,227,208,.5);text-decoration:none;font-size:13px;transition:color .2s}
+.fc a:hover{color:var(--sand)}
+.fc-contact li{display:flex;gap:10px;font-size:13px;color:rgba(237,227,208,.58);margin-bottom:9px;align-items:flex-start}
+.fc-contact .ic{color:var(--gold);flex-shrink:0;margin-top:2px}
+.footer-bottom{max-width:1300px;margin:0 auto;border-top:1px solid rgba(255,255,255,.07);padding-top:22px;display:flex;justify-content:space-between;font-size:12px;color:rgba(237,227,208,.3)}
+
+/* ── RESPONSIVE ── */
 @media(max-width:1100px){.prod-grid{grid-template-columns:repeat(3,1fr)}.prod-grid-5{grid-template-columns:repeat(4,1fr)}.cats{grid-template-columns:repeat(4,1fr)}.trust-inner{grid-template-columns:1fr 1fr}.footer-inner{grid-template-columns:1fr 1fr}.footer-inner>div:first-child{grid-column:1/-1}}
-@media(max-width:768px){.nav-links{display:none}.hero-grid{grid-template-columns:1fr}.hero-left{border-right:none;border-bottom:1px solid rgba(180,160,120,.3);padding:50px 0}.hero-left h1{font-size:40px}.hero-right{padding:50px 0}.banners,.promo-split{grid-template-columns:1fr}.prod-grid,.prod-grid-5{grid-template-columns:repeat(2,1fr)}.cats{grid-template-columns:repeat(3,1fr)}.wa-cta-inner{flex-direction:column;text-align:center}.wa-cta-btns{align-items:center}.ai-window{width:300px}.footer-inner{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:8px;text-align:center}}
+@media(max-width:768px){.nav-links{display:none}.hero-grid{grid-template-columns:1fr}.hero-left{border-right:none;border-bottom:1px solid rgba(180,160,120,.3);padding:48px 0}.hero-left h1{font-size:40px}.hero-right{padding:48px 0}.banners,.promo-split{grid-template-columns:1fr}.prod-grid,.prod-grid-5{grid-template-columns:repeat(2,1fr)}.cats{grid-template-columns:repeat(3,1fr)}.wa-cta-inner{flex-direction:column;text-align:center}.cart-drawer{width:100vw}.ai-window{width:300px}.footer-inner{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:6px;text-align:center}}
 </style>
 </head>
 <body>
 
-<!-- AI ASSISTANT -->
-<div class="ai-fab" id="aiFab">
-  <div class="ai-window" id="aiWindow">
+<!-- ══ TOAST ══ -->
+<div class="toast" id="toast"></div>
+
+<!-- ══ CART OVERLAY + DRAWER ══ -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>Your Cart <span id="cartHeaderCount">0</span></h3>
+    <button class="cart-close" onclick="closeCart()">×</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty" id="cartEmpty">
+      <span>🛒</span>
+      <p>Your cart is empty.<br>Add items using the <strong>+ Add to Cart</strong> button on any product.</p>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-note">
+      <strong>No prices shown</strong> — prices change with exchange rates. Our team will confirm the current total when you send this cart to WhatsApp.
+    </div>
+    <div class="cart-summary" id="cartSummary"></div>
+    <a href="#" class="btn-checkout" id="checkoutBtn" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Send Order to WhatsApp
+    </a>
+    <button class="btn-clear-cart" onclick="clearCart()">Clear cart</button>
+  </div>
+</div>
+
+<!-- ══ AI ASSISTANT ══ -->
+<div class="ai-fab">
+  <div class="ai-window" id="aiWin">
     <div class="ai-header">
       <div class="ai-header-info">
         <div class="ai-avatar">🤖</div>
-        <div><h4>AishaAde Assistant</h4><small>Ask me anything · Online</small></div>
+        <div><h4>AishaAde Assistant</h4><small>Online · Ask me anything</small></div>
       </div>
-      <button class="ai-close-btn" onclick="toggleAI()">×</button>
+      <button class="ai-close" onclick="toggleAI()">×</button>
     </div>
     <div class="ai-msgs" id="aiMsgs">
-      <div class="ai-msg bot">Assalamu alaykum! 👋 I'm AishaAde's assistant. I can help you find products, learn about shipping, or connect you with our team on WhatsApp. What can I help you with?</div>
+      <div class="msg bot">Assalamu alaykum! 👋 I'm AishaAde's assistant. I can help you find products, learn about shipping, or guide you through placing an order. What do you need?</div>
     </div>
-    <div class="ai-typing-row" id="aiTyping"><div class="ai-typing-dot"><span></span><span></span><span></span></div></div>
-    <div class="ai-chips-row">
-      <button class="ai-chip" onclick="chip('What gadgets do you sell?')">Gadgets</button>
-      <button class="ai-chip" onclick="chip('Tell me about Islamic wears')">Wears</button>
-      <button class="ai-chip" onclick="chip('How do I place an order?')">Order</button>
-      <button class="ai-chip" onclick="chip('Do you ship internationally?')">Shipping</button>
+    <div class="ai-typing" id="aiTyping"><div class="typing-dots"><span></span><span></span><span></span></div></div>
+    <div class="ai-chips">
+      <button class="chip" onclick="chip('What gadgets do you sell?')">Gadgets</button>
+      <button class="chip" onclick="chip('Tell me about Islamic wears')">Wears</button>
+      <button class="chip" onclick="chip('How do I place an order?')">How to Order</button>
+      <button class="chip" onclick="chip('Do you ship internationally?')">Shipping</button>
     </div>
-    <div class="ai-inp-row">
-      <input class="ai-inp" id="aiInp" placeholder="Ask a question…" onkeydown="if(event.key==='Enter')sendMsg()"/>
-      <button class="ai-send-btn" onclick="sendMsg()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M2 21L23 12 2 3v7l15 2-15 2z"/></svg>
+    <div class="ai-input-row">
+      <input class="ai-input" id="aiInp" placeholder="Type your question…" onkeydown="if(event.key==='Enter')sendAI()"/>
+      <button class="ai-send" onclick="sendAI()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M2 21L23 12 2 3v7l15 2-15 2z"/></svg>
       </button>
     </div>
   </div>
   <button class="ai-bubble" onclick="toggleAI()" title="AI Assistant">🤖</button>
 </div>
 
-<!-- TOPBAR -->
+<!-- ══ TOPBAR ══ -->
 <div class="topbar">
-  🌍 Nationwide & International Delivery &nbsp;·&nbsp; All orders via
-  <a href="https://wa.me/2347062921566" target="_blank"> 💬 WhatsApp: 07062921566</a>
+  🌍 Nationwide & International Delivery &nbsp;·&nbsp;
+  <a href="https://wa.me/2347062921566" target="_blank">💬 Order on WhatsApp: 07062921566</a>
 </div>
 
-<!-- NAV -->
+<!-- ══ NAV ══ -->
 <nav>
   <div class="nav-inner">
+    <!-- LOGO -->
     <a href="#" class="logo-wrap">
-      <svg class="logo-svg" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="23" cy="23" r="21" stroke="#3d4a26" stroke-width="1.5" fill="none" opacity="0.4"/>
         <circle cx="23" cy="23" r="18" fill="#3d4a26"/>
         <g fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.9">
-          <polygon points="23,8 25.5,16.5 34,14 28,21 34,28 25.5,25.5 23,34 20.5,25.5 12,28 18,21 12,14 20.5,16.5" fill="none"/>
+          <polygon points="23,8 25.5,16.5 34,14 28,21 34,28 25.5,25.5 23,34 20.5,25.5 12,28 18,21 12,14 20.5,16.5"/>
         </g>
         <g fill="#c9a84c" opacity="0.85">
           <ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(0 23 23)"/>
@@ -233,41 +348,58 @@ footer{background:var(--charcoal);color:rgba(237,227,208,.7);padding:60px 28px 2
         </g>
         <circle cx="23" cy="23" r="2.8" fill="#fff"/>
         <text x="23" y="27.5" text-anchor="middle" font-family="serif" font-size="6.5" font-weight="700" fill="#fff" letter-spacing="1">AA</text>
-        <circle cx="23" cy="2" r="1.2" fill="#c9a84c"/><circle cx="44" cy="23" r="1.2" fill="#c9a84c"/>
-        <circle cx="23" cy="44" r="1.2" fill="#c9a84c"/><circle cx="2" cy="23" r="1.2" fill="#c9a84c"/>
+        <circle cx="23" cy="2" r="1.2" fill="#c9a84c"/>
+        <circle cx="44" cy="23" r="1.2" fill="#c9a84c"/>
+        <circle cx="23" cy="44" r="1.2" fill="#c9a84c"/>
+        <circle cx="2" cy="23" r="1.2" fill="#c9a84c"/>
       </svg>
       <div class="logo-text"><strong>AishaAde</strong><span>Islamic Wears & Home</span></div>
     </a>
+
     <ul class="nav-links">
       <li><a href="#">Home</a></li>
       <li><a href="#wears">Wears</a></li>
       <li><a href="#gadgets">Gadgets</a></li>
       <li><a href="https://wa.me/2347062921566" target="_blank">Contact</a></li>
     </ul>
+
     <div class="nav-actions">
-      <button class="nav-btn" onclick="toggleAI()" title="AI Assistant">
+      <!-- AI -->
+      <button class="nav-icon-btn" onclick="toggleAI()" title="AI Assistant">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
       </button>
-      <a href="https://wa.me/2347062921566" target="_blank" class="nav-btn wa-nav" title="WhatsApp Order">
+      <!-- Cart -->
+      <button class="nav-icon-btn" onclick="openCart()" title="Cart" id="navCartBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="nav-cart-badge" id="navCartBadge" style="display:none">0</span>
+      </button>
+      <!-- WhatsApp -->
+      <a href="https://wa.me/2347062921566" target="_blank" class="nav-icon-btn wa-icon-btn" title="WhatsApp">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
       </a>
     </div>
   </div>
 </nav>
 
-<!-- MARQUEE -->
+<!-- ══ MARQUEE ══ -->
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <span class="marquee-item">New Arrivals</span><span class="marquee-item">Free Delivery on Orders ₦40k+</span>
-    <span class="marquee-item">Islamic Wears · Home Gadgets</span><span class="marquee-item">Nationwide & International Shipping</span>
-    <span class="marquee-item">Order via WhatsApp · 07062921566</span><span class="marquee-item">AI Assistant Available</span>
-    <span class="marquee-item">New Arrivals</span><span class="marquee-item">Free Delivery on Orders ₦40k+</span>
-    <span class="marquee-item">Islamic Wears · Home Gadgets</span><span class="marquee-item">Nationwide & International Shipping</span>
-    <span class="marquee-item">Order via WhatsApp · 07062921566</span><span class="marquee-item">AI Assistant Available</span>
+    <span class="marquee-item">New Arrivals</span>
+    <span class="marquee-item">Free Delivery above ₦40,000</span>
+    <span class="marquee-item">Islamic Wears · Home Gadgets</span>
+    <span class="marquee-item">Nationwide & International Shipping</span>
+    <span class="marquee-item">Add to Cart · Send to WhatsApp</span>
+    <span class="marquee-item">07062921566</span>
+    <span class="marquee-item">New Arrivals</span>
+    <span class="marquee-item">Free Delivery above ₦40,000</span>
+    <span class="marquee-item">Islamic Wears · Home Gadgets</span>
+    <span class="marquee-item">Nationwide & International Shipping</span>
+    <span class="marquee-item">Add to Cart · Send to WhatsApp</span>
+    <span class="marquee-item">07062921566</span>
   </div>
 </div>
 
-<!-- HERO -->
+<!-- ══ HERO ══ -->
 <div class="hero">
   <div class="hero-grid">
     <div class="hero-left">
@@ -276,28 +408,28 @@ footer{background:var(--charcoal);color:rgba(237,227,208,.7);padding:60px 28px 2
       <p>Modest, stylish, and crafted for the modern Muslim woman and man. Abayas, Jilbabs, Jubbas and more — delivered anywhere in Nigeria and worldwide.</p>
       <a href="#wears" class="btn-primary">Shop Collection →</a>
       <div class="hero-thumbs">
-        <div class="hero-thumb"><div class="prod-placeholder" style="background:linear-gradient(135deg,#2a2a2a,#1a1a1a)"><span>👘</span></div></div>
-        <div class="hero-thumb"><div class="prod-placeholder" style="background:linear-gradient(135deg,#7a8f52,#5c6e3a)"><span>🕌</span></div></div>
-        <div class="hero-thumb"><div class="prod-placeholder" style="background:linear-gradient(135deg,#d4c0a8,#a89070)"><span>🧣</span></div></div>
-        <div class="hero-thumb"><div class="prod-placeholder" style="background:linear-gradient(135deg,#7a5c3a,#5c3d1e)"><span>👗</span></div></div>
+        <div class="hero-thumb"><div class="prod-placeholder" style="background:linear-gradient(135deg,#2a2a2a,#1a1a1a)"><span class="icon">👘</span></div></div>
+        <div class="hero-thumb"><div class="prod-placeholder" style="background:linear-gradient(135deg,#7a8f52,#5c6e3a)"><span class="icon">🕌</span></div></div>
+        <div class="hero-thumb"><div class="prod-placeholder" style="background:linear-gradient(135deg,#d4c0a8,#a89070)"><span class="icon">🧣</span></div></div>
+        <div class="hero-thumb"><div class="prod-placeholder" style="background:linear-gradient(135deg,#7a5c3a,#5c3d1e)"><span class="icon">👗</span></div></div>
       </div>
     </div>
     <div class="hero-right">
       <div class="hero-eyebrow">Smart Home Gadgets</div>
       <h2>Upgrade Your<br><em>Home Today</em></h2>
-      <p>20+ home gadgets shipped to your door — anywhere in Nigeria or internationally. No prices shown; message us for current rates.</p>
+      <p>20+ home gadgets shipped anywhere. Add items to your cart and send your full order to WhatsApp in one tap.</p>
       <a href="#gadgets" class="btn-outline">Explore Gadgets →</a>
       <div class="hero-thumbs">
-        <div class="hero-thumb"><img src="gadget_01_digital_body_weight_scale.jpg" alt="Digital Scale"/></div>
+        <div class="hero-thumb"><img src="gadget_01_digital_body_weight_scale.jpg" alt="Scale"/></div>
         <div class="hero-thumb"><img src="gadget_06_3d_moon_lamp.jpg" alt="Moon Lamp"/></div>
-        <div class="hero-thumb"><img src="prod_wall_clock_sun.jpg" alt="Wall Clock"/></div>
-        <div class="hero-thumb"><img src="prod_inflatable_sofa.jpg" alt="Inflatable Sofa"/></div>
+        <div class="hero-thumb"><img src="gadget_11_electric_kettle_18l.jpg" alt="Kettle"/></div>
+        <div class="hero-thumb"><img src="gadget_20_portable_blender.jpg" alt="Blender"/></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- BANNERS -->
+<!-- ══ BANNERS ══ -->
 <div class="banners">
   <div class="banner banner-f">
     <h2>Women's Collection</h2>
@@ -311,17 +443,17 @@ footer{background:var(--charcoal);color:rgba(237,227,208,.7);padding:60px 28px 2
   </div>
 </div>
 
-<!-- TRUST -->
+<!-- ══ TRUST ══ -->
 <div class="trust">
   <div class="trust-inner">
     <div class="trust-cell"><span class="trust-icon">🚚</span><div><strong>Free Shipping</strong><span>Orders above ₦40,000</span></div></div>
     <div class="trust-cell"><span class="trust-icon">🌍</span><div><strong>Worldwide Delivery</strong><span>Nigeria & International</span></div></div>
-    <div class="trust-cell"><span class="trust-icon">💬</span><div><strong>WhatsApp Orders</strong><span>Fast response guaranteed</span></div></div>
+    <div class="trust-cell"><span class="trust-icon">🛒</span><div><strong>Cart → WhatsApp</strong><span>Send your order in one tap</span></div></div>
     <div class="trust-cell"><span class="trust-icon">🤖</span><div><strong>AI Assistant</strong><span>24/7 product help</span></div></div>
   </div>
 </div>
 
-<!-- CATEGORIES -->
+<!-- ══ CATEGORIES ══ -->
 <div class="section">
   <div class="sec-head"><h2>Browse by Category</h2></div>
   <div class="cats">
@@ -334,126 +466,78 @@ footer{background:var(--charcoal);color:rgba(237,227,208,.7);padding:60px 28px 2
   </div>
 </div>
 
-<!-- 20 GADGETS -->
+<!-- ══ 20 GADGETS ══ -->
 <div class="section" id="gadgets">
   <div class="sec-head"><h2>Home Gadgets</h2><a href="https://wa.me/2347062921566" target="_blank">Order on WhatsApp →</a></div>
-  <div class="prod-grid prod-grid-5">
-
-    <div class="prod-card"><div class="prod-img-wrap"><span class="prod-badge new">New</span><button class="wishlist-btn">♡</button><img src="gadget_01_digital_body_weight_scale.jpg" alt="Digital Body Weight Scale"/></div><div class="prod-info"><div class="prod-cat">Bathroom · Scale</div><h3>Digital Body Weight Scale</h3><p class="prod-desc">Accurate readings, sleek design</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Digital%20Body%20Weight%20Scale" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="gadget_02_mini_hair_straightener.jpg" alt="Mini Hair Straightener"/></div><div class="prod-info"><div class="prod-cat">Beauty · Hair</div><h3>Mini Hair Straightener</h3><p class="prod-desc">Compact & travel friendly</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Mini%20Hair%20Straightener" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><span class="prod-badge hot">Hot</span><button class="wishlist-btn">♡</button><img src="gadget_03_portable_garment_steamer.jpg" alt="Portable Garment Steamer"/></div><div class="prod-info"><div class="prod-cat">Laundry · Steamer</div><h3>Portable Garment Steamer</h3><p class="prod-desc">Quick heat, wrinkle-free clothes</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Portable%20Garment%20Steamer" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="gadget_04_multi-layer_drying_rack.jpg" alt="Multi-Layer Drying Rack"/></div><div class="prod-info"><div class="prod-cat">Laundry · Rack</div><h3>Multi-Layer Drying Rack</h3><p class="prod-desc">Space-saving, sturdy & durable</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Multi-Layer%20Drying%20Rack" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><span class="prod-badge new">New</span><button class="wishlist-btn">♡</button><img src="gadget_05_handheld_vacuum_cleaner.jpg" alt="Handheld Vacuum Cleaner"/></div><div class="prod-info"><div class="prod-cat">Cleaning · Vacuum</div><h3>Handheld Vacuum Cleaner</h3><p class="prod-desc">Powerful suction, USB charge</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Handheld%20Vacuum%20Cleaner" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="gadget_06_3d_moon_lamp.jpg" alt="3D Moon Lamp"/></div><div class="prod-info"><div class="prod-cat">Decor · Lighting</div><h3>3D Moon Lamp</h3><p class="prod-desc">Touch control, adjustable brightness</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%203D%20Moon%20Lamp" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="gadget_07_usb_mini_humidifier.jpg" alt="USB Mini Humidifier"/></div><div class="prod-info"><div class="prod-cat">Wellness · Air</div><h3>USB Mini Humidifier</h3><p class="prod-desc">Cool mist, quiet, auto-off</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20USB%20Mini%20Humidifier" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><span class="prod-badge hot">Hot</span><button class="wishlist-btn">♡</button><img src="gadget_08_manual_food_chopper.jpg" alt="Manual Food Chopper"/></div><div class="prod-info"><div class="prod-cat">Kitchen · Tools</div><h3>Manual Food Chopper</h3><p class="prod-desc">Easy pull, quick & efficient</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Manual%20Food%20Chopper" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="gadget_09_kitchen_sink_organizer.jpg" alt="Kitchen Sink Organizer"/></div><div class="prod-info"><div class="prod-cat">Kitchen · Storage</div><h3>Kitchen Sink Organizer</h3><p class="prod-desc">Keep essentials neat & dry</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Kitchen%20Sink%20Organizer" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="gadget_10_foldable_laptop_table.jpg" alt="Foldable Laptop Table"/></div><div class="prod-info"><div class="prod-cat">Office · Furniture</div><h3>Foldable Laptop Table</h3><p class="prod-desc">Ergonomic, portable, sturdy</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Foldable%20Laptop%20Table" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><span class="prod-badge new">New</span><button class="wishlist-btn">♡</button><img src="gadget_11_electric_kettle_18l.jpg" alt="Electric Kettle 1.8L"/></div><div class="prod-info"><div class="prod-cat">Kitchen · Appliance</div><h3>Electric Kettle 1.8L</h3><p class="prod-desc">Fast boiling, auto shut-off</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Electric%20Kettle%201.8L" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="gadget_12_360_degree_makeup_organizer.jpg" alt="360 Makeup Organizer"/></div><div class="prod-info"><div class="prod-cat">Beauty · Storage</div><h3>360° Makeup Organizer</h3><p class="prod-desc">Large capacity, rotating design</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20360%20Makeup%20Organizer" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="gadget_13_toothbrush_holder.jpg" alt="Toothbrush Holder"/></div><div class="prod-info"><div class="prod-cat">Bathroom · Organizer</div><h3>Toothbrush Holder</h3><p class="prod-desc">Auto dispenser, wall mount</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Toothbrush%20Holder" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="gadget_14_foldable_washing_basin.jpg" alt="Foldable Washing Basin"/></div><div class="prod-info"><div class="prod-cat">Laundry · Basin</div><h3>Foldable Washing Basin</h3><p class="prod-desc">Space-saving, durable</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Foldable%20Washing%20Basin" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="gadget_15_motion_sensor_night_light.jpg" alt="Motion Sensor Night Light"/></div><div class="prod-info"><div class="prod-cat">Decor · Lighting</div><h3>Motion Sensor Night Light</h3><p class="prod-desc">Smart sensor, energy saving</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Motion%20Sensor%20Night%20Light" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="gadget_16_magnetic_screen_door.jpg" alt="Magnetic Screen Door"/></div><div class="prod-info"><div class="prod-cat">Home · Doors</div><h3>Magnetic Screen Door</h3><p class="prod-desc">Keeps bugs out, fresh air in</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Magnetic%20Screen%20Door" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><span class="prod-badge hot">Hot</span><button class="wishlist-btn">♡</button><img src="gadget_17_fabric_lint_remover.jpg" alt="Fabric Lint Remover"/></div><div class="prod-info"><div class="prod-cat">Laundry · Tools</div><h3>Fabric Lint Remover</h3><p class="prod-desc">Safe, fast & effective</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Fabric%20Lint%20Remover" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="gadget_18_silicone_stretch_lids.jpg" alt="Silicone Stretch Lids"/></div><div class="prod-info"><div class="prod-cat">Kitchen · Storage</div><h3>Silicone Stretch Lids</h3><p class="prod-desc">Reusable, multi-size set</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Silicone%20Stretch%20Lids" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><span class="prod-badge new">New</span><button class="wishlist-btn">♡</button><img src="gadget_19_hanging_closet_organizer.jpg" alt="Hanging Closet Organizer"/></div><div class="prod-info"><div class="prod-cat">Home · Storage</div><h3>Hanging Closet Organizer</h3><p class="prod-desc">Maximize closet space</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Hanging%20Closet%20Organizer" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
-    <div class="prod-card"><div class="prod-img-wrap"><span class="prod-badge hot">Hot</span><button class="wishlist-btn">♡</button><img src="gadget_20_portable_blender.jpg" alt="Portable Blender"/></div><div class="prod-info"><div class="prod-cat">Kitchen · Appliance</div><h3>Portable Blender</h3><p class="prod-desc">USB rechargeable, 6 blades</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Portable%20Blender" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-
+  <div class="prod-grid prod-grid-5" id="gadgetsGrid">
+    <!-- Injected by JS -->
   </div>
 </div>
 
-<!-- MORE PRODUCTS (original photos) -->
+<!-- ══ MORE PRODUCTS ══ -->
 <div class="section">
   <div class="sec-head"><h2>More Products</h2><a href="https://wa.me/2347062921566" target="_blank">All on WhatsApp →</a></div>
-  <div class="prod-grid">
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="prod_scale_bathroom.jpg" alt="iScale SE"/></div><div class="prod-info"><div class="prod-cat">Bathroom · Scale</div><h3>iScale SE Bathroom Scale – 360lbs</h3><p class="prod-desc">Silver, pink, gold & grey options</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20iScale%20SE%20Bathroom%20Scale" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-    <div class="prod-card"><div class="prod-img-wrap"><span class="prod-badge hot">Hot</span><button class="wishlist-btn">♡</button><img src="prod_heat_sealer.jpg" alt="Heat Sealer"/></div><div class="prod-info"><div class="prod-cat">Kitchen · Tools</div><h3>Mini Heat Bag Sealer</h3><p class="prod-desc">3 pastel colours — mint, pink, purple</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Mini%20Heat%20Bag%20Sealer" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="prod_drying_rack.jpg" alt="Drying Rack"/></div><div class="prod-info"><div class="prod-cat">Laundry · Rack</div><h3>3-Tier Clothes Drying Rack</h3><p class="prod-desc">With wheels — pink, blue, grey</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%203-Tier%20Drying%20Rack" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="prod_kinoki_box.jpg" alt="Kinoki Pads"/></div><div class="prod-info"><div class="prod-cat">Wellness · Detox</div><h3>Kinoki Detox Foot Pads – 10 Pack</h3><p class="prod-desc">Overnight bamboo vinegar cleanse</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Kinoki%20Detox%20Foot%20Pads" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="prod_wall_clock_sun.jpg" alt="Sunflower Clock"/></div><div class="prod-info"><div class="prod-cat">Decor · Clock</div><h3>Gold Sunflower Quartz Wall Clock</h3><p class="prod-desc">Resin frame, silent movement</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Gold%20Sunflower%20Wall%20Clock" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-    <div class="prod-card"><div class="prod-img-wrap"><span class="prod-badge new">New</span><button class="wishlist-btn">♡</button><img src="prod_usb_kit.jpg" alt="USB Kit"/></div><div class="prod-info"><div class="prod-cat">Tech · Accessories</div><h3>All-in-One USB Cable Kit</h3><p class="prod-desc">Rose gold — Type-C, Lightning, Micro</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20All-in-One%20USB%20Cable%20Kit" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="prod_kitchen_scale.jpg" alt="Kitchen Scale"/></div><div class="prod-info"><div class="prod-cat">Kitchen · Scale</div><h3>SF-400 Electronic Kitchen Scale</h3><p class="prod-desc">10kg capacity, LCD display</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20SF-400%20Kitchen%20Scale" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-    <div class="prod-card"><div class="prod-img-wrap"><span class="prod-badge hot">Hot</span><button class="wishlist-btn">♡</button><img src="prod_inflatable_sofa.jpg" alt="Inflatable Sofa"/></div><div class="prod-info"><div class="prod-cat">Furniture · Sofa</div><h3>Inflatable Lounge Sofa + Ottoman</h3><p class="prod-desc">5 colour options — folds flat</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Inflatable%20Lounge%20Sofa" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="prod_wall_clock_baroque.jpg" alt="Baroque Clock"/></div><div class="prod-info"><div class="prod-cat">Decor · Clock</div><h3>Gold Baroque Quartz Wall Clock</h3><p class="prod-desc">Open scrollwork frame</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Gold%20Baroque%20Wall%20Clock" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-    <div class="prod-card"><div class="prod-img-wrap"><button class="wishlist-btn">♡</button><img src="prod_kinoki_use.jpg" alt="Kinoki In Use"/></div><div class="prod-info"><div class="prod-cat">Wellness · Detox</div><h3>Kinoki Pads – In Use Demo</h3><p class="prod-desc">Wear on sole overnight</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20Kinoki%20Detox%20Pads" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
+  <div class="prod-grid" id="moreGrid">
+    <!-- Injected by JS -->
   </div>
 </div>
 
-<!-- ISLAMIC WEARS -->
+<!-- ══ ISLAMIC WEARS ══ -->
 <div class="section" id="wears">
   <div class="sec-head"><h2>Islamic Wears</h2><a href="https://wa.me/2347062921566" target="_blank">Order on WhatsApp →</a></div>
-  <div class="prod-grid">
-    <div class="prod-card"><div class="prod-img-wrap" style="background:linear-gradient(160deg,#2a2a2a,#1a1a1a)"><span class="prod-badge new">New</span><button class="wishlist-btn">♡</button><div class="prod-placeholder"><span>👘</span><span>Abaya</span></div></div><div class="prod-info"><div class="prod-cat">Women · Abaya</div><h3>Elegant Black Abaya – Flowy Fabric</h3><p class="prod-desc">Multiple sizes, various styles</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20an%20Abaya" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-    <div class="prod-card"><div class="prod-img-wrap" style="background:linear-gradient(160deg,#7a8f52,#5c6e3a)"><button class="wishlist-btn">♡</button><div class="prod-placeholder"><span>🕌</span><span>Jubba</span></div></div><div class="prod-info"><div class="prod-cat">Men · Jubba</div><h3>Premium Jubba – Linen Blend</h3><p class="prod-desc">Olive, white & beige options</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20a%20Jubba" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-    <div class="prod-card"><div class="prod-img-wrap" style="background:linear-gradient(160deg,#c8b0a0,#a09080)"><button class="wishlist-btn">♡</button><div class="prod-placeholder"><span>🧣</span><span>Hijab</span></div></div><div class="prod-info"><div class="prod-cat">Women · Hijab</div><h3>Premium Jersey Hijab</h3><p class="prod-desc">15+ colours, breathable fabric</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20a%20Hijab" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
-    <div class="prod-card"><div class="prod-img-wrap" style="background:linear-gradient(160deg,#7a5038,#5c3820)"><button class="wishlist-btn">♡</button><div class="prod-placeholder"><span>👗</span><span>Kaftan</span></div></div><div class="prod-info"><div class="prod-cat">Women · Kaftan</div><h3>Embroidered Kaftan</h3><p class="prod-desc">Brown & gold, various sizes</p><a href="https://wa.me/2347062921566?text=Hi!%20Interested%20in%20a%20Kaftan" target="_blank" class="wa-btn">💬 Enquire</a></div></div>
+  <div class="prod-grid" id="wearsGrid">
+    <!-- Injected by JS -->
   </div>
 </div>
 
-<!-- PROMO -->
+<!-- ══ PROMO ══ -->
 <div class="promo-split">
   <div class="promo-card">
-    <div class="promo-img" style="background:linear-gradient(135deg,#ede3d0,#c9a84c)"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:100px;opacity:.2">🕌</div></div>
+    <div class="promo-bg" style="background:linear-gradient(135deg,#ede3d0,#c9a84c)">
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:100px;opacity:.18">🕌</div>
+    </div>
     <div class="promo-body"><p>Islamic Wears</p><h3>Modest Fashion<br>for Every Occasion</h3><a href="https://wa.me/2347062921566" target="_blank">Chat to Order →</a></div>
   </div>
   <div class="promo-card">
-    <div class="promo-img" style="background:linear-gradient(135deg,#3d4a26,#6b3a1f)"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:100px;opacity:.18">🌍</div></div>
+    <div class="promo-bg" style="background:linear-gradient(135deg,#3d4a26,#6b3a1f)">
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:100px;opacity:.16">🌍</div>
+    </div>
     <div class="promo-body"><p>Worldwide Shipping</p><h3>We Deliver<br>Everywhere</h3><a href="https://wa.me/2347062921566" target="_blank">Ask About Shipping →</a></div>
   </div>
 </div>
 
-<!-- WA CTA -->
+<!-- ══ WA CTA ══ -->
 <div class="wa-cta">
   <div class="wa-cta-inner">
     <div class="wa-cta-icon">
-      <svg width="44" height="44" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      <svg width="42" height="42" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     </div>
     <div class="wa-cta-text">
       <h2>All Orders Go Through WhatsApp</h2>
-      <p>To place an order, check availability, get current pricing, or ask about delivery to your location — anywhere in Nigeria or internationally — send us a message. We respond fast.</p>
-      <div class="wa-cta-btns">
-        <a href="https://wa.me/2347062921566" target="_blank" class="btn-wa-big">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          Chat Now · 07062921566
-        </a>
-        <div class="wa-info-pills">
-          <span>📦 Order Tracking</span><span>❓ Product Enquiries</span>
-          <span>🌍 International Shipping</span><span>🚚 Delivery Quotes</span>
-        </div>
+      <p>Add items to your cart, then tap "Send Order to WhatsApp" — your full item list lands in our chat automatically. We confirm current prices and arrange delivery from there.</p>
+      <a href="https://wa.me/2347062921566" target="_blank" class="btn-wa-big">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Chat Now · 07062921566
+      </a>
+      <div class="wa-pills">
+        <span>📦 Order Tracking</span>
+        <span>❓ Product Enquiries</span>
+        <span>🌍 International Shipping</span>
+        <span>🚚 Delivery Quotes</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
+<!-- ══ FOOTER ══ -->
 <footer>
   <div class="footer-inner">
     <div class="f-brand">
       <a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:4px">
-        <svg width="36" height="36" viewBox="0 0 46 46" fill="none"><circle cx="23" cy="23" r="21" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.4"/><circle cx="23" cy="23" r="18" fill="#3d4a26"/><g fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.9"><polygon points="23,8 25.5,16.5 34,14 28,21 34,28 25.5,25.5 23,34 20.5,25.5 12,28 18,21 12,14 20.5,16.5" fill="none"/></g><g fill="#c9a84c" opacity="0.85"><ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(0 23 23)"/><ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(45 23 23)"/><ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(90 23 23)"/><ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(135 23 23)"/></g><circle cx="23" cy="23" r="2.8" fill="#fff"/><text x="23" y="27.5" text-anchor="middle" font-family="serif" font-size="6.5" font-weight="700" fill="#fff" letter-spacing="1">AA</text></svg>
+        <svg width="34" height="34" viewBox="0 0 46 46" fill="none"><circle cx="23" cy="23" r="21" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.4"/><circle cx="23" cy="23" r="18" fill="#3d4a26"/><g fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.9"><polygon points="23,8 25.5,16.5 34,14 28,21 34,28 25.5,25.5 23,34 20.5,25.5 12,28 18,21 12,14 20.5,16.5"/></g><g fill="#c9a84c" opacity="0.85"><ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(0 23 23)"/><ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(45 23 23)"/><ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(90 23 23)"/><ellipse cx="23" cy="17" rx="2.2" ry="4" transform="rotate(135 23 23)"/></g><circle cx="23" cy="23" r="2.8" fill="#fff"/><text x="23" y="27.5" text-anchor="middle" font-family="serif" font-size="6.5" font-weight="700" fill="#fff" letter-spacing="1">AA</text></svg>
         <span style="font-family:'Playfair Display',serif;font-size:20px;color:#ede3d0;font-weight:700">AishaAde</span>
       </a>
-      <p>Quality Islamic fashion and home gadgets — delivered across Nigeria and worldwide. We stock what families actually need at honest prices.</p>
+      <p>Quality Islamic fashion and home gadgets delivered across Nigeria and worldwide. We stock what families actually need at honest prices.</p>
       <div class="social"><a href="#">f</a><a href="#">ig</a><a href="#">tw</a><a href="#">yt</a></div>
     </div>
     <div class="fc">
@@ -477,11 +561,11 @@ footer{background:var(--charcoal);color:rgba(237,227,208,.7);padding:60px 28px 2
     <div class="fc">
       <h4>Contact</h4>
       <ul class="fc-contact">
-        <li><span class="ic">💬</span><a href="https://wa.me/2347062921566" target="_blank" style="color:rgba(237,227,208,.55)">WhatsApp: 07062921566</a></li>
+        <li><span class="ic">💬</span><a href="https://wa.me/2347062921566" target="_blank" style="color:rgba(237,227,208,.5)">WhatsApp: 07062921566</a></li>
         <li><span class="ic">📍</span><span>Ajuwan, Lagos State</span></li>
         <li><span class="ic">📍</span><span>Giwa Junction, Oke-Aro, Ogun State</span></li>
         <li><span class="ic">🌍</span><span>International orders welcome</span></li>
-        <li><span class="ic">🕐</span><span>Mon – Sat: 8am – 7pm</span></li>
+        <li><span class="ic">🕐</span><span>Mon–Sat: 8am–7pm</span></li>
       </ul>
     </div>
   </div>
@@ -492,66 +576,282 @@ footer{background:var(--charcoal);color:rgba(237,227,208,.7);padding:60px 28px 2
 </footer>
 
 <script>
-// ── AI ASSISTANT ──
+// ═══════════════════════════════════════════
+// PRODUCT DATA
+// ═══════════════════════════════════════════
+const GADGETS = [
+  {id:'g01', name:'Digital Body Weight Scale',    img:'gadget_01_digital_body_weight_scale.jpg',    cat:'Bathroom · Scale',    desc:'Accurate readings, sleek design',         badge:'new'},
+  {id:'g02', name:'Mini Hair Straightener',       img:'gadget_02_mini_hair_straightener.jpg',       cat:'Beauty · Hair',       desc:'Compact & travel friendly',               badge:''},
+  {id:'g03', name:'Portable Garment Steamer',     img:'gadget_03_portable_garment_steamer.jpg',     cat:'Laundry · Steamer',   desc:'Quick heat, wrinkle-free clothes',         badge:'hot'},
+  {id:'g04', name:'Multi-Layer Drying Rack',      img:'gadget_04_multi-layer_drying_rack.jpg',      cat:'Laundry · Rack',      desc:'Space-saving, sturdy & durable',          badge:''},
+  {id:'g05', name:'Handheld Vacuum Cleaner',      img:'gadget_05_handheld_vacuum_cleaner.jpg',      cat:'Cleaning · Vacuum',   desc:'Powerful suction, USB charge',            badge:'new'},
+  {id:'g06', name:'3D Moon Lamp',                 img:'gadget_06_3d_moon_lamp.jpg',                 cat:'Decor · Lighting',    desc:'Touch control, adjustable brightness',    badge:''},
+  {id:'g07', name:'USB Mini Humidifier',          img:'gadget_07_usb_mini_humidifier.jpg',          cat:'Wellness · Air',      desc:'Cool mist, quiet, auto-off',              badge:''},
+  {id:'g08', name:'Manual Food Chopper',          img:'gadget_08_manual_food_chopper.jpg',          cat:'Kitchen · Tools',     desc:'Easy pull, quick & efficient',            badge:'hot'},
+  {id:'g09', name:'Kitchen Sink Organizer',       img:'gadget_09_kitchen_sink_organizer.jpg',       cat:'Kitchen · Storage',   desc:'Keep essentials neat & dry',              badge:''},
+  {id:'g10', name:'Foldable Laptop Table',        img:'gadget_10_foldable_laptop_table.jpg',        cat:'Office · Furniture',  desc:'Ergonomic, portable, sturdy',             badge:''},
+  {id:'g11', name:'Electric Kettle 1.8L',         img:'gadget_11_electric_kettle_18l.jpg',          cat:'Kitchen · Appliance', desc:'Fast boiling, auto shut-off',             badge:'new'},
+  {id:'g12', name:'360° Makeup Organizer',        img:'gadget_12_360_degree_makeup_organizer.jpg',  cat:'Beauty · Storage',    desc:'Large capacity, rotating design',         badge:''},
+  {id:'g13', name:'Toothbrush Holder',            img:'gadget_13_toothbrush_holder.jpg',            cat:'Bathroom · Organizer',desc:'Auto dispenser, wall mount',              badge:''},
+  {id:'g14', name:'Foldable Washing Basin',       img:'gadget_14_foldable_washing_basin.jpg',       cat:'Laundry · Basin',     desc:'Space-saving, durable',                   badge:''},
+  {id:'g15', name:'Motion Sensor Night Light',    img:'gadget_15_motion_sensor_night_light.jpg',    cat:'Decor · Lighting',    desc:'Smart sensor, energy saving',             badge:''},
+  {id:'g16', name:'Magnetic Screen Door',         img:'gadget_16_magnetic_screen_door.jpg',         cat:'Home · Doors',        desc:'Keeps bugs out, fresh air in',            badge:''},
+  {id:'g17', name:'Fabric Lint Remover',          img:'gadget_17_fabric_lint_remover.jpg',          cat:'Laundry · Tools',     desc:'Safe, fast & effective',                  badge:'hot'},
+  {id:'g18', name:'Silicone Stretch Lids',        img:'gadget_18_silicone_stretch_lids.jpg',        cat:'Kitchen · Storage',   desc:'Reusable, multi-size set',                badge:''},
+  {id:'g19', name:'Hanging Closet Organizer',     img:'gadget_19_hanging_closet_organizer.jpg',     cat:'Home · Storage',      desc:'Maximize closet space',                   badge:'new'},
+  {id:'g20', name:'Portable Blender',             img:'gadget_20_portable_blender.jpg',             cat:'Kitchen · Appliance', desc:'USB rechargeable, 6 blades',              badge:'hot'},
+];
+
+const MORE = [
+  {id:'m01', name:'iScale SE Bathroom Scale – 360lbs', img:'prod_scale_bathroom.jpg',   cat:'Bathroom · Scale',   desc:'Silver, pink, gold & grey options',          badge:''},
+  {id:'m02', name:'Mini Heat Bag Sealer',               img:'prod_heat_sealer.jpg',       cat:'Kitchen · Tools',    desc:'3 pastel colours — mint, pink, purple',       badge:'hot'},
+  {id:'m03', name:'3-Tier Clothes Drying Rack',         img:'prod_drying_rack.jpg',       cat:'Laundry · Rack',     desc:'With wheels — pink, blue, grey',              badge:''},
+  {id:'m04', name:'Kinoki Detox Foot Pads (10 Pack)',   img:'prod_kinoki_box.jpg',        cat:'Wellness · Detox',   desc:'Overnight bamboo vinegar cleanse',            badge:''},
+  {id:'m05', name:'Gold Sunflower Quartz Wall Clock',   img:'prod_wall_clock_sun.jpg',    cat:'Decor · Clock',      desc:'Resin frame, silent movement',                badge:''},
+  {id:'m06', name:'All-in-One USB Cable Kit',           img:'prod_usb_kit.jpg',           cat:'Tech · Accessories', desc:'Rose gold — Type-C, Lightning, Micro',        badge:'new'},
+  {id:'m07', name:'SF-400 Electronic Kitchen Scale',    img:'prod_kitchen_scale.jpg',     cat:'Kitchen · Scale',    desc:'10kg capacity, LCD display',                  badge:''},
+  {id:'m08', name:'Inflatable Lounge Sofa + Ottoman',   img:'prod_inflatable_sofa.jpg',   cat:'Furniture · Sofa',   desc:'5 colour options — folds flat',               badge:'hot'},
+  {id:'m09', name:'Gold Baroque Quartz Wall Clock',     img:'prod_wall_clock_baroque.jpg',cat:'Decor · Clock',      desc:'Open scrollwork gold frame',                  badge:''},
+  {id:'m10', name:'Kinoki Detox Pads – In Use',         img:'prod_kinoki_use.jpg',        cat:'Wellness · Detox',   desc:'Apply to sole, wear overnight',               badge:''},
+];
+
+const WEARS = [
+  {id:'w01', name:'Elegant Black Abaya',       img:'',  cat:'Women · Abaya',  desc:'Multiple sizes, various styles',     badge:'new',  bg:'linear-gradient(160deg,#2a2a2a,#1a1a1a)', icon:'👘'},
+  {id:'w02', name:'Premium Jubba – Linen',     img:'',  cat:'Men · Jubba',    desc:'Olive, white & beige options',       badge:'',     bg:'linear-gradient(160deg,#7a8f52,#5c6e3a)', icon:'🕌'},
+  {id:'w03', name:'Premium Jersey Hijab',      img:'',  cat:'Women · Hijab',  desc:'15+ colours, breathable fabric',     badge:'',     bg:'linear-gradient(160deg,#c8b0a0,#a09080)', icon:'🧣'},
+  {id:'w04', name:'Embroidered Kaftan',        img:'',  cat:'Women · Kaftan', desc:'Brown & gold, various sizes',        badge:'',     bg:'linear-gradient(160deg,#7a5038,#5c3820)', icon:'👗'},
+];
+
+// ═══════════════════════════════════════════
+// RENDER PRODUCTS
+// ═══════════════════════════════════════════
+function productCard(p) {
+  const badge = p.badge
+    ? `<span class="prod-badge badge-${p.badge}">${p.badge.toUpperCase()}</span>` : '';
+  const imgContent = p.img
+    ? `<img src="${p.img}" alt="${p.name}" loading="lazy"/>`
+    : `<div class="prod-placeholder" style="background:${p.bg}"><span class="icon">${p.icon}</span></div>`;
+
+  return `
+  <div class="prod-card" id="card-${p.id}">
+    <div class="prod-img-wrap">
+      ${badge}
+      <button class="wishlist-btn" onclick="toggleWish(this)" title="Wishlist">♡</button>
+      ${imgContent}
+    </div>
+    <div class="prod-info">
+      <div class="prod-cat">${p.cat}</div>
+      <h3>${p.name}</h3>
+      <p class="prod-desc">${p.desc}</p>
+      <div class="prod-actions">
+        <button class="add-cart-btn" id="btn-${p.id}" onclick="addToCart('${p.id}','${p.name}','${p.img || ''}')">
+          + Add to Cart
+        </button>
+        <a href="https://wa.me/2347062921566?text=Hi!%20I%27m%20interested%20in%3A%20${encodeURIComponent(p.name)}" target="_blank" class="quick-wa-btn" title="Quick WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>`;
+}
+
+document.getElementById('gadgetsGrid').innerHTML = GADGETS.map(productCard).join('');
+document.getElementById('moreGrid').innerHTML    = MORE.map(productCard).join('');
+document.getElementById('wearsGrid').innerHTML   = WEARS.map(productCard).join('');
+
+// ═══════════════════════════════════════════
+// CART STATE
+// ═══════════════════════════════════════════
+let cart = {};   // { id: { name, img, qty } }
+
+function addToCart(id, name, img) {
+  if (cart[id]) {
+    cart[id].qty++;
+  } else {
+    cart[id] = { name, img, qty: 1 };
+  }
+  updateCartUI();
+  const btn = document.getElementById('btn-' + id);
+  if (btn) {
+    btn.textContent = `In Cart (${cart[id].qty})`;
+    btn.classList.add('in-cart');
+  }
+  showToast('🛒 ' + name + ' added to cart');
+  // Animate badge
+  const badge = document.getElementById('navCartBadge');
+  badge.classList.remove('cart-pop');
+  void badge.offsetWidth; // reflow
+  badge.classList.add('cart-pop');
+}
+
+function removeFromCart(id) {
+  delete cart[id];
+  const btn = document.getElementById('btn-' + id);
+  if (btn) { btn.textContent = '+ Add to Cart'; btn.classList.remove('in-cart'); }
+  updateCartUI();
+}
+
+function changeQty(id, delta) {
+  if (!cart[id]) return;
+  cart[id].qty += delta;
+  if (cart[id].qty <= 0) { removeFromCart(id); return; }
+  const btn = document.getElementById('btn-' + id);
+  if (btn) btn.textContent = `In Cart (${cart[id].qty})`;
+  updateCartUI();
+}
+
+function clearCart() {
+  Object.keys(cart).forEach(id => {
+    const btn = document.getElementById('btn-' + id);
+    if (btn) { btn.textContent = '+ Add to Cart'; btn.classList.remove('in-cart'); }
+  });
+  cart = {};
+  updateCartUI();
+}
+
+function updateCartUI() {
+  const ids = Object.keys(cart);
+  const totalQty = ids.reduce((s, id) => s + cart[id].qty, 0);
+
+  // Nav badge
+  const badge = document.getElementById('navCartBadge');
+  const headerCount = document.getElementById('cartHeaderCount');
+  badge.textContent = totalQty;
+  badge.style.display = totalQty > 0 ? 'flex' : 'none';
+  headerCount.textContent = totalQty;
+
+  const body = document.getElementById('cartBody');
+  const footer = document.getElementById('cartFooter');
+  const empty = document.getElementById('cartEmpty');
+  const summary = document.getElementById('cartSummary');
+
+  if (ids.length === 0) {
+    body.innerHTML = '';
+    body.appendChild(empty);
+    empty.style.display = 'block';
+    footer.style.display = 'none';
+    return;
+  }
+
+  empty.style.display = 'none';
+  footer.style.display = 'block';
+
+  // Render items
+  body.innerHTML = ids.map(id => {
+    const item = cart[id];
+    const imgHtml = item.img
+      ? `<img src="${item.img}" alt="${item.name}"/>`
+      : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:28px;background:#f0ebe2">🛍️</div>`;
+    return `
+    <div class="cart-item">
+      <div class="cart-item-img">${imgHtml}</div>
+      <div class="cart-item-info">
+        <h4>${item.name}</h4>
+        <p>Qty: ${item.qty}</p>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty('${id}',-1)">−</button>
+          <div class="qty-val">${item.qty}</div>
+          <button class="qty-btn" onclick="changeQty('${id}',+1)">+</button>
+        </div>
+      </div>
+      <button class="cart-remove" onclick="removeFromCart('${id}')" title="Remove">×</button>
+    </div>`;
+  }).join('');
+
+  // Summary
+  summary.innerHTML = `
+    <div class="cart-summary-row"><span>${totalQty} item${totalQty!==1?'s':''}</span><span>No prices shown</span></div>
+    <div class="cart-summary-row total"><span>Ready to send</span><span>→ WhatsApp</span></div>`;
+
+  // Build WA link
+  const lines = ids.map((id,i) => `${i+1}. ${cart[id].name} (x${cart[id].qty})`);
+  const msg = `Hi AishaAde! 👋 I'd like to order the following:\n\n${lines.join('\n')}\n\nPlease confirm availability and current prices. Thank you!`;
+  document.getElementById('checkoutBtn').href = `https://wa.me/2347062921566?text=${encodeURIComponent(msg)}`;
+}
+
+function openCart()  { document.getElementById('cartDrawer').classList.add('open'); document.getElementById('cartOverlay').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeCart() { document.getElementById('cartDrawer').classList.remove('open'); document.getElementById('cartOverlay').classList.remove('open'); document.body.style.overflow=''; }
+
+// ═══════════════════════════════════════════
+// WISHLIST
+// ═══════════════════════════════════════════
+function toggleWish(btn) {
+  const active = btn.classList.toggle('active');
+  btn.textContent = active ? '♥' : '♡';
+  if (active) showToast('♥ Added to wishlist');
+}
+
+// ═══════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+// ═══════════════════════════════════════════
+// AI ASSISTANT
+// ═══════════════════════════════════════════
 const KB = {
-  gadget:   "We carry 20+ home gadgets: digital scales, drying racks, garment steamers, moon lamps, humidifiers, electric kettle, portable blender, food chopper, makeup organiser, foldable laptop table and more! Tap 💬 Enquire on any product to order.",
-  wear:     "We stock Abayas, Jubbas, Hijabs, Kaftans and more in multiple colours and sizes. Send us a WhatsApp message to check current stock and find your size.",
-  order:    "All orders go through WhatsApp! Tap the 💬 Enquire button on any product, or message us at 07062921566. Tell us what you want and your delivery address.",
-  ship:     "We deliver nationwide across all Nigerian states 🇳🇬 and internationally 🌍. Message us on WhatsApp with your address for a delivery quote and timeline.",
-  price:    "We don't show prices online — they change with exchange rates. Message us on WhatsApp and we'll give you the current price immediately. 07062921566",
-  location: "We're in Lagos (Ajuwan) and Ogun State (Giwa Junction, Oke-Aro). We ship nationwide and internationally via courier.",
-  payment:  "We accept bank transfers and other options depending on your location. Chat with us on WhatsApp to confirm the best payment method for you.",
-  greet:    "Assalamu alaykum! How can I help you find a product or place an order today? 😊",
-  default:  "I'm not sure about that — the best thing to do is message us on WhatsApp at 07062921566 and our team will help right away. 💬"
+  greet:    'Assalamu alaykum! 😊 How can I help you find something today?',
+  gadget:   'We carry 20+ home gadgets: digital scales, garment steamers, moon lamps, humidifiers, food choppers, electric kettles, portable blenders, makeup organisers, foldable laptop tables and more! Add any item to your cart and send the whole order to WhatsApp.',
+  wear:     'We stock Abayas, Jubbas, Hijabs, and Kaftans in multiple colours and sizes. Tap 💬 on any wear item to enquire, or add to cart and send your full order.',
+  order:    'Easy! Add items to your cart using the "+ Add to Cart" button on any product, then click the cart icon in the top-right and tap "Send Order to WhatsApp". We confirm prices and arrange delivery from there.',
+  ship:     'We deliver nationwide across all Nigerian states 🇳🇬 and internationally 🌍. Message us on WhatsApp with your address for a delivery quote and timeline.',
+  price:    'Prices are not shown online because they change with exchange rates. Once you send your cart to WhatsApp, we confirm the current price immediately. 07062921566',
+  location: 'We\'re based in Lagos (Ajuwan) and Ogun State (Giwa Junction, Oke-Aro). We ship nationwide and internationally via courier.',
+  payment:  'We accept bank transfers and other options depending on your location. Chat with us on WhatsApp to confirm payment.',
+  cart:     'Click "+ Add to Cart" on any product. When you\'re ready, tap the 🛒 cart icon in the top navigation, then hit "Send Order to WhatsApp" — your full item list goes straight to our chat!',
+  default:  'I\'m not sure about that one. The fastest help is a WhatsApp message to 07062921566 — our team responds quickly! 💬'
 };
-function reply(m){
+function aiReply(m) {
   m = m.toLowerCase();
-  if(/salam|hello|hi|hey|alayk/.test(m)) return KB.greet;
-  if(/gadget|appliance|scale|kettle|blender|steamer|vacuum|lamp|rack|chopper|organis|humidif/.test(m)) return KB.gadget;
-  if(/wear|abaya|jubba|hijab|kaftan|cloth|dress|fashion|modest/.test(m)) return KB.wear;
-  if(/order|buy|purchas|how do i/.test(m)) return KB.order;
-  if(/ship|deliver|international|worldwide|country|abroad|state/.test(m)) return KB.ship;
-  if(/price|cost|how much|cheap|naira|expensive/.test(m)) return KB.price;
-  if(/location|address|where are you|lagos|ogun/.test(m)) return KB.location;
-  if(/pay|payment|transfer|bank/.test(m)) return KB.payment;
+  if (/salam|hello|hi |hey |alayk/.test(m)) return KB.greet;
+  if (/cart|add|basket|checkout/.test(m)) return KB.cart;
+  if (/gadget|appliance|scale|kettle|blender|steamer|vacuum|lamp|rack|chopper|organis|humidif/.test(m)) return KB.gadget;
+  if (/wear|abaya|jubba|hijab|kaftan|cloth|dress|modest/.test(m)) return KB.wear;
+  if (/order|buy|purchas|how do i/.test(m)) return KB.order;
+  if (/ship|deliver|international|worldwide|country|abroad|state/.test(m)) return KB.ship;
+  if (/price|cost|how much|cheap|naira|expensive/.test(m)) return KB.price;
+  if (/location|address|where are you|lagos|ogun/.test(m)) return KB.location;
+  if (/pay|payment|transfer|bank/.test(m)) return KB.payment;
   return KB.default;
 }
-function toggleAI(){
-  const w = document.getElementById('aiWindow');
+function toggleAI() {
+  const w = document.getElementById('aiWin');
   w.classList.toggle('open');
-  if(w.classList.contains('open')) setTimeout(()=>document.getElementById('aiInp').focus(),50);
+  if (w.classList.contains('open')) setTimeout(() => document.getElementById('aiInp').focus(), 60);
 }
-function addMsg(text, who){
+function addAIMsg(text, who) {
   const m = document.getElementById('aiMsgs');
   const d = document.createElement('div');
-  d.className = 'ai-msg '+who;
+  d.className = 'msg ' + who;
   d.textContent = text;
   m.appendChild(d);
   m.scrollTop = m.scrollHeight;
 }
-function sendMsg(){
+function sendAI() {
   const inp = document.getElementById('aiInp');
   const msg = inp.value.trim();
-  if(!msg) return;
-  addMsg(msg,'user');
-  inp.value='';
+  if (!msg) return;
+  addAIMsg(msg, 'user');
+  inp.value = '';
   const t = document.getElementById('aiTyping');
-  t.style.display='block';
+  t.style.display = 'block';
   document.getElementById('aiMsgs').scrollTop = 9999;
-  setTimeout(()=>{
-    t.style.display='none';
-    addMsg(reply(msg),'bot');
-  }, 800 + Math.random()*700);
+  setTimeout(() => {
+    t.style.display = 'none';
+    addAIMsg(aiReply(msg), 'bot');
+  }, 750 + Math.random() * 600);
 }
-function chip(text){ document.getElementById('aiInp').value=text; sendMsg(); }
-document.querySelectorAll('.wishlist-btn').forEach(b=>{
-  b.addEventListener('click',function(e){
-    e.stopPropagation();
-    const liked = this.textContent==='♡';
-    this.textContent = liked?'♥':'♡';
-    this.style.color = liked?'#c0392b':'';
-  });
-});
+function chip(text) { document.getElementById('aiInp').value = text; sendAI(); }
+
+// Init
+updateCartUI();
 </script>
 </body>
 </html>
